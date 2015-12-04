@@ -75,22 +75,55 @@
 <h3>Get the data and tidy it</h3>
 
 <pre><code class="r">require(readr)
-original_data = read_delim(&quot;~/Downloads/Brauer2008_DataSet1.tds&quot;, delim = &quot;\t&quot;)
-## View(original_data)  # opens a spreadsheet view in RStudio
+</code></pre>
+
+<pre><code>## Loading required package: readr
+</code></pre>
+
+<pre><code class="r">original_data = read_delim(&quot;~/Downloads/Brauer2008_DataSet1.tds&quot;, delim = &quot;\t&quot;)
+</code></pre>
+
+<pre><code>## Error: &#39;~/Downloads/Brauer2008_DataSet1.tds&#39; does not exist.
+</code></pre>
+
+<pre><code class="r">## View(original_data)  # opens a spreadsheet view in RStudio
 dim(original_data)
 </code></pre>
 
-<pre><code>## [1] 5537   40
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;original_data&#39; not found
 </code></pre>
 
 <p>Fix the name column by splitting on <code>||</code>, remove white space and drop unecessary variables.  We also want to ensure that we have <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> -- each variable should be one column - the column headers are values not variable names.</p>
 
 <pre><code class="r">require(dplyr)
-require(tidyr)
-cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, 
+</code></pre>
+
+<pre><code>## Loading required package: dplyr
+## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+</code></pre>
+
+<pre><code class="r">require(tidyr)
+</code></pre>
+
+<pre><code>## Loading required package: tidyr
+</code></pre>
+
+<pre><code class="r">cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, 
     &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% mutate_each(funs(trimws), name:systematic_name) %&gt;% 
     select(-number, -GID, -YORF, -GWEIGHT) %&gt;% gather(sample, expression, G0.05:U0.3) %&gt;% 
     separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;original_data&#39; not found
 </code></pre>
 
 <p>The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the <strong>magrittr</strong> package for details).  The <code>gather()</code> function <strong>melts</strong> the data - instead of one row per gene, we now have one row per gene per sample.  We&#39;ve <strong>gathered</strong> 36 columns together into two variables.</p>
@@ -104,36 +137,31 @@ cleaned_data %&gt;% filter(name == &quot;LEU1&quot;) %&gt;% ggplot(aes(rate, exp
     geom_line()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;% filter(BP == &quot;leucine biosynthesis&quot;) %&gt;% ggplot(aes(rate, expression, 
     color = nutrient)) + geom_line() + facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-2.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;% filter(BP == &quot;leucine biosynthesis&quot;) %&gt;% ggplot(aes(rate, expression, 
     color = nutrient)) + geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) + 
     facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-3.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;% filter(BP == &quot;sulfur metabolism&quot;) %&gt;% ggplot(aes(rate, expression, 
     color = nutrient)) + geom_point() + geom_smooth(method = &quot;lm&quot;, se = FALSE) + 
     facet_wrap(~name + systematic_name, scales = &quot;free_y&quot;)
 </code></pre>
 
-<pre><code>## Warning: Removed 2 rows containing missing values (stat_smooth).
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
 </code></pre>
-
-<pre><code>## Warning: Removed 1 rows containing missing values (stat_smooth).
-</code></pre>
-
-<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-4-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
 <h4>Interactive approach: SHINY!!</h4>
 

@@ -35,13 +35,27 @@ install.packages(c("readr", "tidyr", "dplyr"))
 
 ```r
 require(readr)
+```
+
+```
+## Loading required package: readr
+```
+
+```r
 original_data = read_delim("~/Downloads/Brauer2008_DataSet1.tds", delim = "\t")
+```
+
+```
+## Error: '~/Downloads/Brauer2008_DataSet1.tds' does not exist.
+```
+
+```r
 ## View(original_data)  # opens a spreadsheet view in RStudio
 dim(original_data)
 ```
 
 ```
-## [1] 5537   40
+## Error in eval(expr, envir, enclos): object 'original_data' not found
 ```
 
 Fix the name column by splitting on `||`, remove white space and drop unecessary variables.  We also want to ensure that we have [tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) -- each variable should be one column - the column headers are values not variable names.
@@ -49,11 +63,39 @@ Fix the name column by splitting on `||`, remove white space and drop unecessary
 
 ```r
 require(dplyr)
+```
+
+```
+## Loading required package: dplyr
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 require(tidyr)
+```
+
+```
+## Loading required package: tidyr
+```
+
+```r
 cleaned_data = original_data %>% separate(NAME, c("name", "BP", "MF", "systematic_name", 
     "number"), sep = "\\|\\|") %>% mutate_each(funs(trimws), name:systematic_name) %>% 
     select(-number, -GID, -YORF, -GWEIGHT) %>% gather(sample, expression, G0.05:U0.3) %>% 
     separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'original_data' not found
 ```
 
 The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the **magrittr** package for details).  The `gather()` function **melts** the data - instead of one row per gene, we now have one row per gene per sample.  We've **gathered** 36 columns together into two variables.
@@ -69,14 +111,18 @@ cleaned_data %>% filter(name == "LEU1") %>% ggplot(aes(rate, expression, color =
     geom_line()
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>% filter(BP == "leucine biosynthesis") %>% ggplot(aes(rate, expression, 
     color = nutrient)) + geom_line() + facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-2.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>% filter(BP == "leucine biosynthesis") %>% ggplot(aes(rate, expression, 
@@ -84,7 +130,9 @@ cleaned_data %>% filter(BP == "leucine biosynthesis") %>% ggplot(aes(rate, expre
     facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-3.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>% filter(BP == "sulfur metabolism") %>% ggplot(aes(rate, expression, 
@@ -93,18 +141,8 @@ cleaned_data %>% filter(BP == "sulfur metabolism") %>% ggplot(aes(rate, expressi
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (stat_smooth).
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
 ```
-
-```
-## Warning: Removed 1 rows containing missing values (stat_smooth).
-```
-
-```
-## Warning: Removed 3 rows containing missing values (geom_point).
-```
-
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-4.png) 
 
 
 #### Interactive approach: SHINY!!

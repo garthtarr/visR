@@ -47,18 +47,18 @@ data("artificialeg", package = "mplot")
 d3heatmap::d3heatmap(cor(artificialeg))
 ```
 
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, cache=FALSE}
 data("artificialeg", package = "mplot")
 htmlwidgets::saveWidget(d3heatmap::d3heatmap(cor(artificialeg)), 'D3hmap.html')
 cat('<iframe src="D3hmap.html" width="600px" height="500px" frameborder=0> </iframe>')
 ```
 
-```{r, eval=FALSE, tidy=TRUE}
+```{r, eval=FALSE, tidy=TRUE, cache=FALSE}
 data("diabetes", package = "mplot")
 pairsD3::pairsD3(diabetes[,c("y","tch","hdl","ldl","tc")],group = diabetes$sex,width = 600) 
 ```
 
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, cache=FALSE}
 data("diabetes", package = "mplot")
 pairsD3::savePairs(pairsD3::pairsD3(diabetes[,c("y","tch","hdl","ldl","tc")],group = diabetes$sex,width = 600), 'pairsD3.html')
 cat('<iframe src="pairsD3.html" width="600px" height="600px" frameborder=0> </iframe>')
