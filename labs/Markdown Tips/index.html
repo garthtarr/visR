@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Markdown Tips</title>
+    <link rel="stylesheet" href="../../libraries/frameworks/minimal/stylesheets/styles.css">
+    <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/solarized_light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        
+    
+  </head>
+  <body>
+    <div class="wrapper">
+<header>
+  <h1>Markdown Tips</h1>
+<!--  <p></p>
+
+   <img width='150px' src='../../assets/img/'></img>
+      -->
+  <p class="view">
+    <!-- <a href="http://github.com/garthtarr/msR">
+     View the Project on GitHub <small>garthtarr/msR</small>
+    </a>
+    <img width='150px' src='../../assets/img/'></img>
+    -->
+    <a href="http://garthtarr.com">Garth Tarr</a> <span style="float:right;"><a href="https://twitter.com/garthtarr"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/in/garthtarr"><i class="fa fa-linkedin-square"></i></a> <a href="https://github.com/garthtarr"><i class="fa fa-github"></i></a></span>
+  </p>
+  
+  
+      <!--
+  <ul class='buttons'>
+  <i class="fa fa-twitter"></i><strong><a href="https://twitter.com/garthtarr"> @garthtarr </a></strong>
+  </ul>
+
+    <li><a href="https://github.com/garthtarr/msR/zipball/gh-pages">
+      Download <strong>ZIP File</strong>
+    </a></li>
+
+    <li><a href="https://github.com/garthtarr/msR/tarball/gh-pages">
+      View On <strong>GitHub</strong>
+    </a></li>
+
+    <li><a href="http://github.com/garthtarr/msR">
+      Fork On <strong>GitHub</strong></a>
+    </li>
+  </ul>
+      -->
+    <ol>
+    </ol>
+</header>
+
+      <section>
+        <h2>R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.  A useful guide to help you get started can be found <a href="http://shiny.rstudio.com/articles/rmarkdown.html">here</a>.</p>
+
+<p>Rmarkdown is a great way to do reproducible research and generate reports.</p>
+
+<h3>Super brief overview</h3>
+
+<ol>
+<li>Create a new Rmd file.  In RStudio <code>File -&gt; New File -&gt; R Markdown...</code></li>
+<li>When you have a Rmd file open in RStudio there&#39;s a <code>Knit HTML</code> button up the top of the source window.  You click that button to turn the markdown into HTML (or PDF or Word).</li>
+<li>Text and R code can be combined in the Rmd file.  Code chunks begin with three back ticks followed by <code>r</code>, the (optional) chunk name and any arugments: <code></code><code>{r}` or `</code><code>{r chunk_name, tidy=TRUE}</code>.  The chunk also ends with three back ticks <code></code>`<code></code>.  Examples can be seen in the template that opens along as a new file in RStudio.</li>
+</ol>
+
+<h3>Including Plots</h3>
+
+<p>You can embed static plots in an rmarkdown document without doing anything special.  Important chunk options are <code>fig.width</code> and <code>fig.height</code> to set the figure width and height for example <code></code>`<code>{r, fig.width=4, fig.height=6}</code>.</p>
+
+<h3>Including interactive visalisations</h3>
+
+<p>If you&#39;re sticking with HTML (as opposed to PDF or Word), you might like to take advantage of the interactive visualisations that leverage web technologies such as JavaScript.  In this workshop we highlight <code>pairsD3</code> and <code>d3heatmap</code>.  To include these in a rmarkdown document, the chunk need to have the option <code>results=&#39;asis&#39;</code> and it&#39;s safest to also set <code>cache=FALSE</code> (sometimes this is required).  For example, the below chunk begins with <code></code>`<code>{r, results=&#39;asis&#39;, cache=FALSE}</code></p>
+
+<pre><code class="r">data(&quot;artificialeg&quot;, package = &quot;mplot&quot;)
+d3heatmap::d3heatmap(cor(artificialeg))
+</code></pre>
+
+<iframe src="D3hmap.html" width="600px" height="500px" frameborder=0> </iframe>
+
+<pre><code class="r">data(&quot;diabetes&quot;, package = &quot;mplot&quot;)
+pairsD3::pairsD3(diabetes[, c(&quot;y&quot;, &quot;tch&quot;, &quot;hdl&quot;, &quot;ldl&quot;, &quot;tc&quot;)], group = diabetes$sex, 
+    width = 600)
+</code></pre>
+
+<iframe src="pairsD3.html" width="600px" height="600px" frameborder=0> </iframe>
+
+      </section>
+      <footer>
+        <p>Maintained by <a href="http://github.com/garthtarr"><i class="fa fa-github"></i>/garthtarr
+        </a></p>
+        <!--<p><small>Hosted on GitHub Pages &mdash; Theme by 
+          <a href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>-->
+      </footer>    </div>
+    <script src="../../libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
+  </body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

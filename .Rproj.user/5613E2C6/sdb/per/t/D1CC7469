@@ -1,0 +1,17 @@
+{
+    "contents" : "## This script updates all the html files with any changes that have\n## been made.  Use this instead of the knit HTML button.\n\n## blogify\n# require(devtools)\n# install_github('ramnathv/slidify') # , ref = 'dev')\n# devtools::install_github('muschellij2/slidify') # stingr fix\n# fixes the errror Error in if (body$content == \"\") { :\n# install_github('ramnathv/poirot')\n# install_github('ramnathv/slidifyLibraries')\n# install_github(\"cboettig/knitcitations\")\nlibrary(knitr)\nlibrary(knitcitations)\nsite = yaml::yaml.load_file(\"site.yml\")\ncwd = getwd()\nrmdFiles = dir(\".\", recursive = TRUE, pattern = \"*.Rmd\")\npages = poirot:::parse_pages(rmdFiles)\ntags = poirot:::get_tags(pages)\nslidify:::render_pages(pages, site, tags)\nsetwd(cwd)\n",
+    "created" : 1447988838830.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3101134208",
+    "id" : "D1CC7469",
+    "lastKnownWriteTime" : 1447665271,
+    "path" : "~/Dropbox/Consulting/Wshops/visR/blogify.R",
+    "project_path" : "blogify.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

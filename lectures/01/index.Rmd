@@ -1,0 +1,100 @@
+---
+title    : Interactive analytics and data visualisation in R
+subtitle : BioInfoSummer 2015
+author   : Garth Tarr
+mode     : selfcontained # {standalone, draft}
+url      : {lib: "../../libraries", assets: "../../assets"}
+lecnum   : "01"
+framework   : io2012
+highlighter : highlight.js
+hitheme     : tomorrow # default # googlecode # zenburn # 
+widgets  : [bootstrap, mathjax]
+---
+
+
+```{r Lec1, echo=FALSE, warning=FALSE, message=FALSE, cache=FALSE}
+#library(knitcitations)
+#cleanbib()
+#newbib()
+#bib <- read.bibtex('../../assets/msR.bib')
+opts_chunk$set(tidy = TRUE, cache = FALSE) 
+
+tablecode <- function(df, tabletype="gridtable"){
+  tmp <- noquote(apply(df, 1, function(x) paste0("<td data-th='", sprintf("%s",colnames(df)), "'>", x, "</td>", collapse=" ")))
+
+  cat(
+    c(
+      noquote(paste0("<table id='", tabletype,"' style='width:100%'> ")),
+      noquote(paste0("<tr>", paste0("<th>", sprintf("%s",colnames(df)), "</th>", collapse=" "), "</tr>")),
+      noquote(unlist(lapply(tmp, function(x) paste0("<tr>", x, "</tr>")))),
+      noquote("</table>")
+    )
+  )
+}
+
+require(knitr)
+hook_output = knit_hooks$get("output")
+
+knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    hook_output(x, options)  # pass to default hook
+  }
+  else {
+    x <- unlist(stringr::str_split(x, "\n"))
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), "...\n")
+    }
+    # paste these lines together
+    x <- paste(x, collapse = "\n")
+    hook_output(x, options)
+  }
+})
+```
+
+<br>
+
+<blockquote>
+<h2>"Doubt is not a pleasant mental state, <br> but certainty is a ridiculous one."</h2>
+
+<p style="text-align: right"><b>Voltaire (1694-1778)</b></p>
+</blockquote>
+
+<br>
+
+<div class="columns-2">
+
+<p>
+<ul>
+<li> <span style="color:red; font-weight:normal">Necessity</span> to select models is great despite philosophical issues </li>
+<li> Myriad of  model/variable selection methods based on <span style="color:blue; font-weight:normal">loglikelihood</span>, <span style="color:red; font-weight:normal">RSS</span>, prediction errors, <span style="color:orange; font-weight:normal">resampling</span>, etc </li>
+</ul>
+</p>
+
+<br>
+
+</div>
+
+
+
+
+
+
+
+--- .codefont
+
+## References
+
+```{r results="asis", echo=FALSE, cache=FALSE}
+RefManageR::BibOptions(bib.style="authoryear")
+bibliography()
+```
+
+--- .codefont
+
+## Session Info
+
+```{r,tidy=TRUE}
+#sessionInfo()
+```

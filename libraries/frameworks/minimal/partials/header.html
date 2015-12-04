@@ -1,0 +1,44 @@
+<header>
+  <h1>{{{ page.title }}}</h1>
+<!--  <p>{{{ page.subtitle }}}</p>
+
+   <img width='150px' src='{{page.url.assets}}/img/{{site.biglogo}}'></img>
+  {{# page.github }}
+      -->
+  <p class="view">
+    <!-- <a href="http://github.com/{{user}}/{{repo}}">
+     View the Project on GitHub <small>{{user}}/{{repo}}</small>
+    </a>
+    <img width='150px' src='{{page.url.assets}}/img/{{site.biglogo}}'></img>
+    -->
+    <a href="http://garthtarr.com">Garth Tarr</a> <span style="float:right;"><a href="https://twitter.com/garthtarr"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/in/garthtarr"><i class="fa fa-linkedin-square"></i></a> <a href="https://github.com/garthtarr"><i class="fa fa-github"></i></a></span>
+  </p>
+  
+  
+      <!--
+  <ul class='buttons'>
+  <i class="fa fa-twitter"></i><strong><a href="https://twitter.com/garthtarr"> @garthtarr </a></strong>
+  </ul>
+
+    <li><a href="https://github.com/{{user}}/{{repo}}/zipball/{{branch}}">
+      Download <strong>ZIP File</strong>
+    </a></li>
+
+    <li><a href="https://github.com/{{user}}/{{repo}}/tarball/{{branch}}">
+      View On <strong>GitHub</strong>
+    </a></li>
+
+    <li><a href="http://github.com/{{user}}/{{repo}}">
+      Fork On <strong>GitHub</strong></a>
+    </li>
+  </ul>
+      -->
+  {{/ page.github }}
+    <ol>
+    {{# page.menu }}
+      <p>{{{ . }}}</p>
+    {{/ page.menu }}
+    </ol>
+</header>
+
+
