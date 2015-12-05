@@ -35,27 +35,14 @@ install.packages(c("readr", "tidyr", "dplyr"))
 
 ```r
 require(readr)
-```
-
-```
-## Loading required package: readr
-```
-
-```r
-original_data = read_delim("~/Downloads/Brauer2008_DataSet1.tds", delim = "\t")
-```
-
-```
-## Error: '~/Downloads/Brauer2008_DataSet1.tds' does not exist.
-```
-
-```r
+original_data = read_delim("https://raw.githubusercontent.com/garthtarr/visR/gh-pages/Brauer2008_DataSet1.tds", 
+    delim = "\t")
 ## View(original_data)  # opens a spreadsheet view in RStudio
 dim(original_data)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'original_data' not found
+## [1] 5537   40
 ```
 
 Fix the name column by splitting on `||`, remove white space and drop unecessary variables.  We also want to ensure that we have [tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) -- each variable should be one column - the column headers are values not variable names.
@@ -63,95 +50,92 @@ Fix the name column by splitting on `||`, remove white space and drop unecessary
 
 ```r
 require(dplyr)
-```
-
-```
-## Loading required package: dplyr
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 require(tidyr)
-```
-
-```
-## Loading required package: tidyr
-```
-
-```r
-cleaned_data = original_data %>% separate(NAME, c("name", "BP", "MF", "systematic_name", 
-    "number"), sep = "\\|\\|") %>% mutate_each(funs(trimws), name:systematic_name) %>% 
-    select(-number, -GID, -YORF, -GWEIGHT) %>% gather(sample, expression, G0.05:U0.3) %>% 
-    separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'original_data' not found
+cleaned_data = original_data %>%
+  separate(NAME, 
+           c("name", "BP", "MF", "systematic_name", "number"), 
+           sep = "\\|\\|") %>%
+  mutate_each(funs(trimws), name:systematic_name) %>%
+  select(-number, -GID, -YORF, -GWEIGHT)  %>%
+  gather(sample, expression, G0.05:U0.3) %>%
+  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
 ```
 
 The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the **magrittr** package for details).  The `gather()` function **melts** the data - instead of one row per gene, we now have one row per gene per sample.  We've **gathered** 36 columns together into two variables.
 
 ### Visualise the data
 
-#### Classical approach
+Below is a classical approach using `ggplot2` to visualise ... explanation of what I've done below.
 
 
 ```r
 library(ggplot2)
-cleaned_data %>% filter(name == "LEU1") %>% ggplot(aes(rate, expression, color = nutrient)) + 
-    geom_line()
+cleaned_data %>%
+  filter(name == "LEU1") %>%
+  ggplot(aes(rate, expression, color = nutrient)) +
+  geom_line()
 ```
 
-```
-## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
-```
-
-```r
-cleaned_data %>% filter(BP == "leucine biosynthesis") %>% ggplot(aes(rate, expression, 
-    color = nutrient)) + geom_line() + facet_wrap(~name)
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
-```
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
 
 ```r
-cleaned_data %>% filter(BP == "leucine biosynthesis") %>% ggplot(aes(rate, expression, 
-    color = nutrient)) + geom_point() + geom_smooth(method = "lm", se = FALSE) + 
-    facet_wrap(~name)
+cleaned_data %>%
+  filter(BP == "leucine biosynthesis") %>%
+  ggplot(aes(rate, expression, color = nutrient)) +
+  geom_line() +
+  facet_wrap(~name)
 ```
 
-```
-## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
-```
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-2.png) 
 
 ```r
-cleaned_data %>% filter(BP == "sulfur metabolism") %>% ggplot(aes(rate, expression, 
-    color = nutrient)) + geom_point() + geom_smooth(method = "lm", se = FALSE) + 
-    facet_wrap(~name + systematic_name, scales = "free_y")
+cleaned_data %>%
+  filter(BP == "leucine biosynthesis") %>%
+  ggplot(aes(rate, expression, color = nutrient)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~name)
 ```
 
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-3.png) 
+
+```r
+cleaned_data %>%
+  filter(BP == "sulfur metabolism") %>%
+  ggplot(aes(rate, expression, color = nutrient)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~name + systematic_name, scales = "free_y")
 ```
-## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
-```
+
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-4.png) 
+
+## Basic
+
+### Reimplement the above plots in ggvis
 
 
-#### Interactive approach: SHINY!!
 
-Convert this basic shiny app from `ggplot2` to `ggvis`.  The aim here is two fold: 
-1. understand how the components link within the `shiny` app; and 
+### Play with htmlwidgets 
+
+E.g. pairsD3, d3heatmap, ... 
+
+## Intermediate: Shiny app
+
+Take an example shiny app that has ggplot2 graphics and reimplement it with ggvis.
+
+Convert [this](https://raw.githubusercontent.com/garthtarr/visR/gh-pages/labs/01/app.R) shiny app from `ggplot2` to `ggvis`.  The aim here is two fold: 
+
+1. Understand how the components link within the `shiny` app; and
 2. Move beyond static plots with `ggvis`.
 
 Try adding a line of best fit using `geom_smooth()` in `ggplot2` or `layer_model_predictions()` in `ggvis`.
+
+## Advanced: Add functionality to the shiny app
+
+Add analytics to the shiny app and add in some htmlwidgets.
+
+
 
 ## Reference
 

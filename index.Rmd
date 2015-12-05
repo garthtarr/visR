@@ -42,42 +42,22 @@ install.packages("mplot")
 install.packages("pairsD3")
 install.packages("d3heatmap")
 install.packages("edgebundleR")
+install.packages("readr")
 ```
 
 ### Resources
 
-```{r echo = F, results = 'asis', cache=FALSE}
-lectures = dir('lectures', full = TRUE)
-links = paste0(seq_along(lectures), ". ", 
-  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
-)
-writeLines(links)
-```
-
-```{r echo = F, results = 'asis', cache=FALSE}
-labs = dir('labs', full = TRUE)
-links = paste0(seq_along(labs), ". ", 
-  "[Lab ", basename(labs), "]", "(", labs, "/index.html)"
-)
-writeLines(links)
-```
-
-1. [Lab 01](labs/01/solutions.html)
+1. [Lecture](lectures/01/index.html)
+2. [Lab](labs/01/index.html)
+3. [Markdown tips](labs/Markdown%20Tips/index.html)
+4. [Suggested lab solutions](labs/01/solutions.html)
 
 ### Recommended further reading
 
-#### Articles
-
 - 
 - Tarr G, Müller S, and Welsh AH (2015). mplot: An R package for graphical model stability and variable selection. arXiv:1509.07583 [stat.ME]
-
-#### Books
-
 - 
 
-#### Packages
-
-- 
 
 ### Feedback
 
