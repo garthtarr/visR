@@ -52,12 +52,9 @@ install.packages("readr")
 3. [Markdown tips](labs/Markdown%20Tips/index.html)
 4. [Suggested lab solutions](labs/01/solutions.html)
 
-### Recommended further reading
+#### Recommended further reading
 
-- 
-- Tarr G, Müller S, and Welsh AH (2015). mplot: An R package for graphical model stability and variable selection. arXiv:1509.07583 [stat.ME]
-- 
-
+- Tarr G, Müller S, and Welsh AH (2015). mplot: An R package for graphical model stability and variable selection. <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>
 
 ### Feedback
 
