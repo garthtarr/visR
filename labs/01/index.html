@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Interactive analytics and data visualisation in R</title>
+    <title>Data visualisation, interactive data analysis, statistical programming</title>
     <link rel="stylesheet" href="../../libraries/frameworks/minimal/stylesheets/styles.css">
     <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/solarized_light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -17,7 +17,7 @@
   <body>
     <div class="wrapper">
 <header>
-  <h1>Interactive analytics and data visualisation in R</h1>
+  <h1>Data visualisation, interactive data analysis, statistical programming</h1>
 <!--  <p></p>
 
    <img width='150px' src='../../assets/img/'></img>
@@ -98,6 +98,9 @@ cleaned_data = original_data %&gt;%
   separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
 </code></pre>
 
+<pre><code>## Error in select(., -number, -GID, -YORF, -GWEIGHT): unused arguments (-number, -GID, -YORF, -GWEIGHT)
+</code></pre>
+
 <p>The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the <strong>magrittr</strong> package for details).  The <code>gather()</code> function <strong>melts</strong> the data - instead of one row per gene, we now have one row per gene per sample.  We&#39;ve <strong>gathered</strong> 36 columns together into two variables.</p>
 
 <h3>Visualise the data</h3>
@@ -111,7 +114,8 @@ cleaned_data %&gt;%
   geom_line()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
@@ -120,7 +124,8 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-2.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
@@ -130,7 +135,8 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-3.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;sulfur metabolism&quot;) %&gt;%
@@ -140,7 +146,8 @@ cleaned_data %&gt;%
   facet_wrap(~name + systematic_name, scales = &quot;free_y&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+</code></pre>
 
 <h2>Basic</h2>
 

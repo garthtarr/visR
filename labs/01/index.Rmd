@@ -1,5 +1,5 @@
 ---
-title    : "Interactive analytics and data visualisation in R"
+title    : "Data visualisation, interactive data analysis, statistical programming"
 author   : Garth Tarr
 framework   : minimal
 url      : {lib: "../../libraries", assets: "../../assets"}

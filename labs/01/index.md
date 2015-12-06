@@ -1,5 +1,5 @@
 ---
-title    : "Interactive analytics and data visualisation in R"
+title    : "Data visualisation, interactive data analysis, statistical programming"
 author   : Garth Tarr
 framework   : minimal
 url      : {lib: "../../libraries", assets: "../../assets"}
@@ -61,6 +61,10 @@ cleaned_data = original_data %>%
   separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
 ```
 
+```
+## Error in select(., -number, -GID, -YORF, -GWEIGHT): unused arguments (-number, -GID, -YORF, -GWEIGHT)
+```
+
 The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the **magrittr** package for details).  The `gather()` function **melts** the data - instead of one row per gene, we now have one row per gene per sample.  We've **gathered** 36 columns together into two variables.
 
 ### Visualise the data
@@ -76,7 +80,9 @@ cleaned_data %>%
   geom_line()
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>%
@@ -86,7 +92,9 @@ cleaned_data %>%
   facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-2.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>%
@@ -97,7 +105,9 @@ cleaned_data %>%
   facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-3.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ```r
 cleaned_data %>%
@@ -108,7 +118,9 @@ cleaned_data %>%
   facet_wrap(~name + systematic_name, scales = "free_y")
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-4.png) 
+```
+## Error in eval(expr, envir, enclos): object 'cleaned_data' not found
+```
 
 ## Basic
 

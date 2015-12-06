@@ -58,4 +58,4 @@ install.packages("readr")
 
 ### Feedback
 
-At the end of the course, please provide your feedback <a href="https://docs.google.com/forms/UPDATE">here</a>.
+At the end of the course, please provide your feedback <a href="https://docs.google.com/forms/d/14PPaCJDNbJzF4dKc7ONVDgnBGanFA2eM1XRCFRWgNaE/viewform">here</a>.
