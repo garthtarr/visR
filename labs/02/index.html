@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Data visualisation, interactive data analysis, statistical programming</title>
+    <link rel="stylesheet" href="../../libraries/frameworks/minimal/stylesheets/styles.css">
+    <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/solarized_light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        
+    
+  </head>
+  <body>
+    <div class="wrapper">
+<header>
+  <h1>Data visualisation, interactive data analysis, statistical programming</h1>
+<!--  <p></p>
+
+   <img width='150px' src='../../assets/img/'></img>
+      -->
+  <p class="view">
+    <!-- <a href="http://github.com/garthtarr/visR">
+     View the Project on GitHub <small>garthtarr/visR</small>
+    </a>
+    <img width='150px' src='../../assets/img/'></img>
+    -->
+    <a href="http://garthtarr.com">Garth Tarr</a> <span style="float:right;"><a href="https://twitter.com/garthtarr"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/in/garthtarr"><i class="fa fa-linkedin-square"></i></a> <a href="https://github.com/garthtarr"><i class="fa fa-github"></i></a></span>
+  </p>
+  
+  
+      <!--
+  <ul class='buttons'>
+  <i class="fa fa-twitter"></i><strong><a href="https://twitter.com/garthtarr"> @garthtarr </a></strong>
+  </ul>
+
+    <li><a href="https://github.com/garthtarr/visR/zipball/gh-pages">
+      Download <strong>ZIP File</strong>
+    </a></li>
+
+    <li><a href="https://github.com/garthtarr/visR/tarball/gh-pages">
+      View On <strong>GitHub</strong>
+    </a></li>
+
+    <li><a href="http://github.com/garthtarr/visR">
+      Fork On <strong>GitHub</strong></a>
+    </li>
+  </ul>
+      -->
+    <ol>
+    </ol>
+</header>
+
+      <section>
+        <h2>Characterizing mutation-expression networks in multiple cancers</h2>
+<ul>
+<li><a href="https://twitter.com/shazanfar">Shila Ghazanfar&#39;s</a>  <a href="https://github.com/garthtarr/visR/labs/02/BIS2015FF_Ghazanfar.pdf">BIS2015 poster</a> has an accompanying Shiny app.</li>
+<li>4,443 tumours analysed over 19 cancers from TCGA</li>
+<li>R Shiny app to explore results among different parameters is available to download at <a href="http://www.maths.usyd.edu.au/u/sheilag/pacmen.zip">www.maths.usyd.edu.au/u/sheilag/pacmen.zip</a></li>
+</ul>
+
+<h3>Instructions</h3>
+
+<ul>
+<li>Check out Shila&#39;s poster <a href="https://twitter.com/shazanfar"><i class="fa fa-twitter"></i></a></li>
+<li>Download and unzip from <a href="http://www.maths.usyd.edu.au/u/sheilag/pacmen.zip">www.maths.usyd.edu.au/u/sheilag/pacmen.zip</a></li>
+<li>Install a few R packages including customised version of D3network using:</li>
+</ul>
+
+<pre><code class="r">install.packages(c(&quot;shiny&quot;, &quot;igraph&quot;, &quot;WGCNA&quot;, &quot;devtools&quot;))
+source(&quot;http://bioconductor.org/biocLite.R&quot;)
+biocLite(&quot;impute&quot;)
+devtools::install_github(&quot;garthtarr/networkD3&quot;)
+</code></pre>
+
+<ul>
+<li>Run the app using a command like (replace <code>~/Downloads/</code> with the path to the <code>pacmen</code> unzipped folder):</li>
+</ul>
+
+<pre><code class="r">shiny::runApp(&quot;~/Downloads/pacmen&quot;)
+</code></pre>
+
+<p>Alternatively you can run the app by opening either the <code>server.R</code> or the <code>ui.R</code> files in RStudio and then clicking the <code>Run App</code> button in the top right of the code editor window.</p>
+
+<ul>
+<li>Explore the app to get a feel for the sorts of things you can do with shiny.</li>
+<li>Check out Shila&#39;s twitter account <a href="https://twitter.com/shazanfar"><i class="fa fa-twitter"></i></a></li>
+</ul>
+
+<h2>Common issues</h2>
+
+<ul>
+<li>It may take a little while for the app to load, be patient!  Serious computations are in progress.</li>
+<li>If the linkages are missing in the interactive graph, but you can see them in the static graph, you need to install a customised version of <code>networkD3</code>:</li>
+</ul>
+
+<pre><code class="r">devtools::install_github(&quot;garthtarr/networkD3&quot;)
+</code></pre>
+
+<h2>Reference</h2>
+
+<ul>
+<li>Robinson D (2015). &quot;Cleaning and visualizing genomic data: a case study in tidy analysis&quot;, blog post. <a href="http://varianceexplained.org/r/tidy-genomics/">http://varianceexplained.org/r/tidy-genomics/</a></li>
+<li>Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast,</li>
+</ul>
+
+      </section>
+      <footer>
+        <p>Maintained by <a href="http://github.com/garthtarr"><i class="fa fa-github"></i>/garthtarr
+        </a></p>
+        <!--<p><small>Hosted on GitHub Pages &mdash; Theme by 
+          <a href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>-->
+      </footer>    </div>
+    <script src="../../libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
+  </body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
