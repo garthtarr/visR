@@ -37,20 +37,20 @@ A working understanding of R will be assumed.
 - Latest version of [Rstudio](http://www.rstudio.com/products/rstudio/download/) 
 - Install the following packages (or ensure you have the latest versions):
 ```{r, eval=FALSE}
-install.packages("networkD3")
-install.packages("mplot")
-install.packages("pairsD3")
-install.packages("d3heatmap")
-install.packages("edgebundleR")
-install.packages("readr")
+install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
+               "ggplot2", "magrittr", "DT", "ggvis", "dplyr",
+               "MASS", "rhandsontable", "pairsD3", "tidyr", "ICSNP",
+               "networkD3", "d3heatmap", "edgebundleR", "readr", "mplot"))
 ```
 
 ### Resources
 
-1. [Lecture](lectures/01/index.html)
-2. [Lab](labs/01/index.html)
-3. [Markdown tips](labs/Markdown%20Tips/index.html)
-4. [Suggested lab solutions](labs/01/solutions.html)
+1. [Slides](lectures/01/index.html)
+2. [Interactive graphics lab](labs/03/index.html)
+3. [Play with shiny lab](labs/02/index.html)
+4. [Harder shiny + interactive graphics lab](labs/01/index.html)
+5. [Suggested more advanced lab solutions](labs/01/solutions.html)
+6. [Markdown tips](labs/Markdown%20Tips/index.html)
 
 #### Recommended further reading
 
@@ -58,4 +58,4 @@ install.packages("readr")
 
 ### Feedback
 
-At the end of the course, please provide your feedback <a href="https://docs.google.com/forms/d/14PPaCJDNbJzF4dKc7ONVDgnBGanFA2eM1XRCFRWgNaE/viewform">here</a>.
+At the end of the workshop, please provide your feedback <a href="https://docs.google.com/forms/d/14PPaCJDNbJzF4dKc7ONVDgnBGanFA2eM1XRCFRWgNaE/viewform">here</a>.
