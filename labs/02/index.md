@@ -40,7 +40,7 @@ devtools::install_github("garthtarr/networkD3")
 shiny::runApp("~/Downloads/pacmen")
 ```
 
-Alternatively you can run the app by opening either the `server.R` or the `ui.R` files in RStudio and then clicking the `Run App` button in the top right of the code editor window.
+- Alternatively you can run the app by opening either the `server.R` or the `ui.R` files in RStudio and then clicking the `Run App` button in the top right of the code editor window.
 
 - Explore the app to get a feel for the sorts of things you can do with shiny.
 - Check out Shila's twitter account <a href="https://twitter.com/shazanfar"><i class="fa fa-twitter"></i></a>
@@ -59,5 +59,4 @@ devtools::install_github("garthtarr/networkD3")
 
 ## Reference
 
-- Robinson D (2015). "Cleaning and visualizing genomic data: a case study in tidy analysis", blog post. http://varianceexplained.org/r/tidy-genomics/
-- Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast,
+- 
