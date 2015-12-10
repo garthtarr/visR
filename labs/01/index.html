@@ -171,15 +171,19 @@ require(readr)
 require(dplyr)
 require(tidyr)
 require(ggplot2)
-original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, 
-    delim = &quot;\t&quot;)
-nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;, S = &quot;Sulfate&quot;, 
-    N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
-cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, 
-    &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% mutate_each(funs(trimws), name:systematic_name) %&gt;% 
-    select(-number, -GID, -YORF, -GWEIGHT) %&gt;% gather(sample, expression, G0.05:U0.3) %&gt;% 
-    separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE) %&gt;% mutate(nutrient = plyr::revalue(nutrient, 
-    nutrient_names)) %&gt;% filter(!is.na(expression), systematic_name != &quot;&quot;)
+original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, delim = &quot;\t&quot;)
+nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;,
+               S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
+cleaned_data = original_data %&gt;%
+  separate(NAME, 
+           c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, &quot;number&quot;), 
+           sep = &quot;\\|\\|&quot;) %&gt;%
+  mutate_each(funs(trimws), name:systematic_name) %&gt;%
+  select(-number, -GID, -YORF, -GWEIGHT)  %&gt;%
+  gather(sample, expression, G0.05:U0.3) %&gt;%
+  separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE) %&gt;%
+  mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %&gt;%
+  filter(!is.na(expression), systematic_name != &quot;&quot;)
 </code></pre>
 
 <ul>
@@ -190,9 +194,11 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 </ul>
 
 <pre><code class="r">output$plot1 = renderPlot({
-    cleaned_data %&gt;% filter(name == &quot;LEU1&quot;) %&gt;% ggplot(aes(rate, expression, 
-        color = nutrient)) + geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + 
-        systematic_name)
+  cleaned_data %&gt;%
+    filter(name == &quot;LEU1&quot;) %&gt;%
+    ggplot(aes(rate, expression, color = nutrient)) +
+    geom_line() + theme_bw(base_size = 14) + 
+    facet_wrap(~name + systematic_name)
 })
 </code></pre>
 
@@ -207,8 +213,11 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 <li>We want to be able to explore different genes instead of just having the <strong>LEU1</strong> gene plotted.  To do this we need a drop down menu and then we need to feed the results of that drop down menu into the plot.  Add this code chunk to the sidebarPanel section in the <code>ui.R</code> file:</li>
 </ul>
 
-<pre><code class="r">selectizeInput(inputId = &quot;gene&quot;, label = &quot;Select gene&quot;, choices = sort(unique(cleaned_data$name)), 
-    selected = &quot;LEU1&quot;, multiple = FALSE)
+<pre><code class="r">selectizeInput(inputId = &quot;gene&quot;,
+               label = &quot;Select gene&quot;,
+               choices = sort(unique(cleaned_data$name)),
+               selected = &quot;LEU1&quot;,
+               multiple = FALSE)
 </code></pre>
 
 <ul>
@@ -217,8 +226,10 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 </ul>
 
 <pre><code class="r">output$plot1 = renderPlot({
-    filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, expression, color = nutrient)) + 
-        geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + systematic_name)
+  filter(is.element(name, input$gene)) %&gt;%
+    ggplot(aes(rate, expression, color = nutrient)) +
+    geom_line() + theme_bw(base_size = 14) + 
+    facet_wrap(~name + systematic_name)
 })
 </code></pre>
 
@@ -227,9 +238,16 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 <li><p>What if we wanted to have the option of a line of best fit?  Add in a checkbox to the sidebarPanel so that your sidebarPanel function should now look like this:</p></li>
 </ul>
 
-<pre><code class="r">sidebarPanel(selectizeInput(inputId = &quot;gene&quot;, label = &quot;Select gene(s)&quot;, choices = sort(unique(cleaned_data$name)), 
-    selected = &quot;LEU1&quot;, multiple = TRUE), checkboxInput(inputId = &quot;line&quot;, label = &quot;Add line of best fit?&quot;, 
-    value = FALSE))
+<pre><code class="r">sidebarPanel(
+  selectizeInput(inputId = &quot;gene&quot;,
+                 label = &quot;Select gene(s)&quot;,
+                 choices = sort(unique(cleaned_data$name)),
+                 selected = &quot;LEU1&quot;,
+                 multiple = TRUE),
+  checkboxInput(inputId = &quot;line&quot;,
+                label = &quot;Add line of best fit?&quot;,
+                value = FALSE)
+)
 </code></pre>
 
 <ul>
@@ -237,32 +255,34 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 </ul>
 
 <pre><code class="r">output$plot1 = renderPlot({
-    if (input$line) {
-        cleaned_data %&gt;% filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, 
-            expression, color = nutrient)) + geom_point() + theme_bw(base_size = 14) + 
-            geom_smooth(method = &quot;lm&quot;, se = FALSE) + facet_wrap(~name)
-    } else {
-        cleaned_data %&gt;% filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, 
-            expression, color = nutrient)) + geom_line() + theme_bw(base_size = 14) + 
-            facet_wrap(~name + systematic_name)
-    }
+  if(input$line){
+    cleaned_data %&gt;%
+      filter(is.element(name, input$gene)) %&gt;%
+      ggplot(aes(rate, expression, color = nutrient)) +
+      geom_point() + theme_bw(base_size = 14) + 
+      geom_smooth(method = &quot;lm&quot;, se = FALSE)  + 
+      facet_wrap(~name)
+  } else {
+    cleaned_data %&gt;%
+      filter(is.element(name, input$gene)) %&gt;%
+      ggplot(aes(rate, expression, color = nutrient)) +
+      geom_line() + theme_bw(base_size = 14) + 
+      facet_wrap(~name + systematic_name)
+  }
 })
 </code></pre>
 
 <ul>
 <li>OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).</li>
-<li>What if we wanted to be able to select all the genes related to a particular biological process.  We&#39;ll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using <code>tabsetPanel</code> in the <code>ui.R</code> file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.</li>
-<li>Once you&#39;re happy with your app, head over to <a href="http://www.shinyapps.io/">shinyapps.io</a>, create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!  To do this, you&#39;ll first need to install these packages:</li>
+<li>What if we wanted to be able to select all the genes related to a particular biological process?  We&#39;ll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using <code>tabsetPanel</code> in the <code>ui.R</code> file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.</li>
+<li>Once you&#39;re happy with your app, head over to <a href="http://www.shinyapps.io/">shinyapps.io</a>, create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!</li>
 </ul>
-
-<pre><code class="r">install.packages(c(&quot;PKI&quot;, &quot;packrat&quot;, &quot;rsconnect&quot;))
-</code></pre>
 
 <h3>Suggested solution</h3>
 
-<p>See <a href="https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp">here</a>. Try not to cheat, unless you really have to.</p>
+<p>See <a href="https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp">here</a> for suggested solutions - though there&#39;s many ways to accomplish the same thing, so yours might not be exactly the same. Try not to cheat, unless you really have to.</p>
 
-<h2>Reference</h2>
+<h2>References</h2>
 
 <ul>
 <li>Robinson D (2015). &quot;Cleaning and visualizing genomic data: a case study in tidy analysis&quot;, blog post. <a href="http://varianceexplained.org/r/tidy-genomics/">http://varianceexplained.org/r/tidy-genomics/</a></li>

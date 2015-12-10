@@ -122,7 +122,7 @@ This is great, but there are so many different genes and processes - how can we 
 - Create a new file in the shiny app directory called `global.R`
 - Paste the following data processing code into `global.R`
 
-```{r eval = FALSE}
+```{r eval = FALSE, tidy=FALSE}
 ### Data preparation
 require(readr)
 require(dplyr)
@@ -148,7 +148,7 @@ cleaned_data = original_data %>%
 
 - You want this in the `server.R` file
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, tidy=FALSE}
 output$plot1 = renderPlot({
   cleaned_data %>%
     filter(name == "LEU1") %>%
@@ -166,7 +166,7 @@ plotOutput("plot1")
 
 - We want to be able to explore different genes instead of just having the **LEU1** gene plotted.  To do this we need a drop down menu and then we need to feed the results of that drop down menu into the plot.  Add this code chunk to the sidebarPanel section in the `ui.R` file:
 
-```{r eval=FALSE}
+```{r eval=FALSE, tidy=FALSE}
 selectizeInput(inputId = "gene",
                label = "Select gene",
                choices = sort(unique(cleaned_data$name)),
@@ -176,7 +176,7 @@ selectizeInput(inputId = "gene",
 - Run to app again to see if it works.  You should get a menu showing up on the left hand side listing all the genes.  This is what the `selectizeInput` function does - it takes a bunch of `choices` and offers them to the user as a dropdown list if `multiple=FALSE` (or a bit fancier where you can select multiple values `multiple=TRUE`).
 - Now we need to link the selected gene to the plot.  The selected gene will be accessible though `input$gene`.  To explain this, `input` is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name `gene` using the `inputId` argument to the `selectizeInput` function.  In the `server.R` function update the plot function to the following:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, tidy=FALSE}
 output$plot1 = renderPlot({
   filter(is.element(name, input$gene)) %>%
     ggplot(aes(rate, expression, color = nutrient)) +
@@ -189,7 +189,7 @@ output$plot1 = renderPlot({
 
 - What if we wanted to have the option of a line of best fit?  Add in a checkbox to the sidebarPanel so that your sidebarPanel function should now look like this:
 
-```{r eval=FALSE}
+```{r eval=FALSE, tidy=FALSE}
 sidebarPanel(
   selectizeInput(inputId = "gene",
                  label = "Select gene(s)",
@@ -204,7 +204,7 @@ sidebarPanel(
 
 - Think about how to incorporate this logical input into the `server.R` code.  When the checkbox is ticked `input$line` will return a value of `TRUE`.  When unticked, `input$line` returns a value of `FALSE`.  It makes sense to use an `if` statement to get two different behaviours.  In the `server.R` adapt your code to something like:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, tidy=FALSE}
 output$plot1 = renderPlot({
   if(input$line){
     cleaned_data %>%
@@ -224,17 +224,15 @@ output$plot1 = renderPlot({
 ```
 
 - OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).
-- What if we wanted to be able to select all the genes related to a particular biological process.  We'll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using `tabsetPanel` in the `ui.R` file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.
-- Once you're happy with your app, head over to [shinyapps.io](http://www.shinyapps.io/), create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!  To do this, you'll first need to install these packages:
-```{r, eval=FALSE}
-install.packages(c("PKI","packrat","rsconnect"))
-```
+- What if we wanted to be able to select all the genes related to a particular biological process?  We'll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using `tabsetPanel` in the `ui.R` file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.
+- Once you're happy with your app, head over to [shinyapps.io](http://www.shinyapps.io/), create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!
+
 
 ### Suggested solution
 
-See [here](https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp). Try not to cheat, unless you really have to.
+See [here](https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp) for suggested solutions - though there's many ways to accomplish the same thing, so yours might not be exactly the same. Try not to cheat, unless you really have to.
 
-## Reference
+## References
 
 - Robinson D (2015). "Cleaning and visualizing genomic data: a case study in tidy analysis", blog post. http://varianceexplained.org/r/tidy-genomics/
 - Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast,

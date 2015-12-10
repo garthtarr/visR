@@ -141,15 +141,19 @@ require(readr)
 require(dplyr)
 require(tidyr)
 require(ggplot2)
-original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", 
-    delim = "\t")
-nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate", S = "Sulfate", 
-    N = "Ammonia", U = "Uracil")
-cleaned_data = original_data %>% separate(NAME, c("name", "BP", "MF", "systematic_name", 
-    "number"), sep = "\\|\\|") %>% mutate_each(funs(trimws), name:systematic_name) %>% 
-    select(-number, -GID, -YORF, -GWEIGHT) %>% gather(sample, expression, G0.05:U0.3) %>% 
-    separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>% mutate(nutrient = plyr::revalue(nutrient, 
-    nutrient_names)) %>% filter(!is.na(expression), systematic_name != "")
+original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", delim = "\t")
+nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
+               S = "Sulfate", N = "Ammonia", U = "Uracil")
+cleaned_data = original_data %>%
+  separate(NAME, 
+           c("name", "BP", "MF", "systematic_name", "number"), 
+           sep = "\\|\\|") %>%
+  mutate_each(funs(trimws), name:systematic_name) %>%
+  select(-number, -GID, -YORF, -GWEIGHT)  %>%
+  gather(sample, expression, G0.05:U0.3) %>%
+  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>%
+  mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%
+  filter(!is.na(expression), systematic_name != "")
 ```
 - Whatever's in `global.R` will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as `ui.R`, `server.R` and `global.R` then simplify the `read_delim()` function to refer to just `Brauer2008_DataSet1.tds` (without loading it over the internet every time).
 - Run the app to make sure it's working in this basic form.
@@ -160,9 +164,11 @@ cleaned_data = original_data %>% separate(NAME, c("name", "BP", "MF", "systemati
 
 ```r
 output$plot1 = renderPlot({
-    cleaned_data %>% filter(name == "LEU1") %>% ggplot(aes(rate, expression, 
-        color = nutrient)) + geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + 
-        systematic_name)
+  cleaned_data %>%
+    filter(name == "LEU1") %>%
+    ggplot(aes(rate, expression, color = nutrient)) +
+    geom_line() + theme_bw(base_size = 14) + 
+    facet_wrap(~name + systematic_name)
 })
 ```
 
@@ -177,8 +183,11 @@ plotOutput("plot1")
 
 
 ```r
-selectizeInput(inputId = "gene", label = "Select gene", choices = sort(unique(cleaned_data$name)), 
-    selected = "LEU1", multiple = FALSE)
+selectizeInput(inputId = "gene",
+               label = "Select gene",
+               choices = sort(unique(cleaned_data$name)),
+               selected = "LEU1",
+               multiple = FALSE)
 ```
 - Run to app again to see if it works.  You should get a menu showing up on the left hand side listing all the genes.  This is what the `selectizeInput` function does - it takes a bunch of `choices` and offers them to the user as a dropdown list if `multiple=FALSE` (or a bit fancier where you can select multiple values `multiple=TRUE`).
 - Now we need to link the selected gene to the plot.  The selected gene will be accessible though `input$gene`.  To explain this, `input` is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name `gene` using the `inputId` argument to the `selectizeInput` function.  In the `server.R` function update the plot function to the following:
@@ -186,8 +195,10 @@ selectizeInput(inputId = "gene", label = "Select gene", choices = sort(unique(cl
 
 ```r
 output$plot1 = renderPlot({
-    filter(is.element(name, input$gene)) %>% ggplot(aes(rate, expression, color = nutrient)) + 
-        geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + systematic_name)
+  filter(is.element(name, input$gene)) %>%
+    ggplot(aes(rate, expression, color = nutrient)) +
+    geom_line() + theme_bw(base_size = 14) + 
+    facet_wrap(~name + systematic_name)
 })
 ```
 
@@ -197,9 +208,16 @@ output$plot1 = renderPlot({
 
 
 ```r
-sidebarPanel(selectizeInput(inputId = "gene", label = "Select gene(s)", choices = sort(unique(cleaned_data$name)), 
-    selected = "LEU1", multiple = TRUE), checkboxInput(inputId = "line", label = "Add line of best fit?", 
-    value = FALSE))
+sidebarPanel(
+  selectizeInput(inputId = "gene",
+                 label = "Select gene(s)",
+                 choices = sort(unique(cleaned_data$name)),
+                 selected = "LEU1",
+                 multiple = TRUE),
+  checkboxInput(inputId = "line",
+                label = "Add line of best fit?",
+                value = FALSE)
+)
 ```
 
 - Think about how to incorporate this logical input into the `server.R` code.  When the checkbox is ticked `input$line` will return a value of `TRUE`.  When unticked, `input$line` returns a value of `FALSE`.  It makes sense to use an `if` statement to get two different behaviours.  In the `server.R` adapt your code to something like:
@@ -207,31 +225,33 @@ sidebarPanel(selectizeInput(inputId = "gene", label = "Select gene(s)", choices 
 
 ```r
 output$plot1 = renderPlot({
-    if (input$line) {
-        cleaned_data %>% filter(is.element(name, input$gene)) %>% ggplot(aes(rate, 
-            expression, color = nutrient)) + geom_point() + theme_bw(base_size = 14) + 
-            geom_smooth(method = "lm", se = FALSE) + facet_wrap(~name)
-    } else {
-        cleaned_data %>% filter(is.element(name, input$gene)) %>% ggplot(aes(rate, 
-            expression, color = nutrient)) + geom_line() + theme_bw(base_size = 14) + 
-            facet_wrap(~name + systematic_name)
-    }
+  if(input$line){
+    cleaned_data %>%
+      filter(is.element(name, input$gene)) %>%
+      ggplot(aes(rate, expression, color = nutrient)) +
+      geom_point() + theme_bw(base_size = 14) + 
+      geom_smooth(method = "lm", se = FALSE)  + 
+      facet_wrap(~name)
+  } else {
+    cleaned_data %>%
+      filter(is.element(name, input$gene)) %>%
+      ggplot(aes(rate, expression, color = nutrient)) +
+      geom_line() + theme_bw(base_size = 14) + 
+      facet_wrap(~name + systematic_name)
+  }
 })
 ```
 
 - OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).
-- What if we wanted to be able to select all the genes related to a particular biological process.  We'll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using `tabsetPanel` in the `ui.R` file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.
-- Once you're happy with your app, head over to [shinyapps.io](http://www.shinyapps.io/), create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!  To do this, you'll first need to install these packages:
+- What if we wanted to be able to select all the genes related to a particular biological process?  We'll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using `tabsetPanel` in the `ui.R` file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.
+- Once you're happy with your app, head over to [shinyapps.io](http://www.shinyapps.io/), create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!
 
-```r
-install.packages(c("PKI", "packrat", "rsconnect"))
-```
 
 ### Suggested solution
 
-See [here](https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp). Try not to cheat, unless you really have to.
+See [here](https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp) for suggested solutions - though there's many ways to accomplish the same thing, so yours might not be exactly the same. Try not to cheat, unless you really have to.
 
-## Reference
+## References
 
 - Robinson D (2015). "Cleaning and visualizing genomic data: a case study in tidy analysis", blog post. http://varianceexplained.org/r/tidy-genomics/
 - Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast,
