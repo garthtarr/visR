@@ -121,17 +121,7 @@ names(cleaned_data)
 <p>Look at one gene <strong>LEU1</strong>:</p>
 
 <pre><code class="r">library(ggplot2)
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;ggplot2&#39;
-## 
-## The following object is masked from &#39;package:ggvis&#39;:
-## 
-##     resolution
-</code></pre>
-
-<pre><code class="r">cleaned_data %&gt;%
+cleaned_data %&gt;%
   filter(name == &quot;LEU1&quot;) %&gt;%
   ggplot(aes(rate, expression, color = nutrient)) +
   geom_line()

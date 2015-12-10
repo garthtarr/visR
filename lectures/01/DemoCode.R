@@ -5,6 +5,7 @@ install.packages("WDI")
 require(googleVis)
 require(WDI)
 demo(WorldBank, package = "googleVis")
+# the next two lines are for Garth:
 # load("lectures/01/worldbankdata.RData")
 # plot(M)
 
@@ -12,6 +13,7 @@ demo(WorldBank, package = "googleVis")
 
 # install.packages("pairsD3")
 require(pairsD3)
+pairs(swiss)
 pairsD3(swiss)
 
 #### networkD3 ####
@@ -40,7 +42,7 @@ require(igraph)
 ws_graph <- watts.strogatz.game(1, 50, 4, 0.05)
 edgebundle(ws_graph,tension = 0.1,fontsize = 18,padding=40)
 
-### dygraphs ####
+#### dygraphs ####
 
 # install.packages(c("dygraphs","huge"))
 require(dygraphs)
@@ -56,28 +58,14 @@ xts.fn = function(x){
 dygraph(xts.fn(X[,1:2])) %>% 
   dyRangeSelector()
 
-### d3heatmaps ###
+#### d3heatmaps ####
 
-# optional: visualise the correlation matrix
 # install.packages("d3heatmap")
 # I've submitted a pull request to add minVal and maxVal options
 devtools::install_github("garthtarr/d3heatmap")
 require(d3heatmap)
 cmat = cor(X[,1:100])
 d3heatmap(cmat, minVal = -1, maxVal = 1)
-
-### rcharts ###
-
-# require(devtools)
-# install_github('ramnathv/rCharts')
-require(rCharts)
-## Example 1 Facetted Scatterplot
-names(iris) = gsub("\\.", "", names(iris))
-rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')
-## Example 2 Facetted Barplot
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, 
-            type = 'multiBarChart')
 
 #### ggvis ####
 
@@ -94,6 +82,31 @@ mtcars %>%
   ggvis(~wt, ~mpg) %>%
   layer_smooths(span = input_slider(0.3, 1, value = 0.5,label="Smoothing")) %>%
   layer_points(opacity := input_slider(0, 1, label="Opacity"))
+
+#### rcharts ####
+
+# require(devtools)
+# install_github('ramnathv/rCharts')
+require(rCharts)
+## Example 1 Facetted Scatterplot
+names(iris) = gsub("\\.", "", names(iris))
+rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')
+## Example 2 Facetted Barplot
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, 
+      type = 'multiBarChart')
+
+#### qtlcharts ####
+
+# install.packages("qtlcharts")
+require(qtlcharts)
+data(geneExpr)
+expr <- geneExpr$expr
+geno <- geneExpr$genotype
+# standard approach
+iplotCorr(expr, reorder=TRUE)
+# colour the scatterplot by a group
+iplotCorr(expr, group = geno, reorder = TRUE)
 
 #### shiny ####
 

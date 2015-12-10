@@ -104,10 +104,12 @@
   </div>
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="segue" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>We are living in the future</h1>
+  </hgroup>
   <article data-timings="">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/aXV-yaFmQNk" frameborder="0" allowfullscreen></iframe>
-
+    
   </article>
   <!-- Presenter Notes -->
   <div class='edit-button button-group'>
@@ -136,20 +138,6 @@
     <h1>We are living in the future</h1>
   </hgroup>
   <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-  <div class='edit-button button-group'>
-    <!-- <a href="http://prose.io/#garthtarr/visR/edit/gh-pages/lectures/01/index.Rmd" class="button icon edit">Edit</a> -->
-    <a href='http://garthtarr.github.io/visR' class="button icon home" target="_self">Home</a>  
-  </div>
-</slide>
-
-<slide class="segue" id="slide-7" style="background:;">
-  <hgroup>
-    <h1>We are living in the future</h1>
-  </hgroup>
-  <article data-timings="">
     <div align="right"><font color="white" size=6>Why are our plots living in the past?</font></div>
 
   </article>
@@ -160,7 +148,7 @@
   </div>
 </slide>
 
-<slide class="segue" id="slide-8" style="background:;">
+<slide class="segue" id="slide-7" style="background:;">
   <hgroup>
     <h1>googleVis</h1>
   </hgroup>
@@ -174,7 +162,7 @@
   </div>
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Overview of googleVis</h2>
   </hgroup>
@@ -205,7 +193,7 @@ demo(WorldBank, package = &quot;googleVis&quot;)
   </div>
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <article data-timings="">
     <p><a href="https://developers.google.com/chart">developers.google.com/chart <i class="fa fa-link"></i></a> </p>
 
@@ -219,7 +207,7 @@ demo(WorldBank, package = &quot;googleVis&quot;)
   </div>
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Key googleVis functions</h2>
   </hgroup>
@@ -340,7 +328,7 @@ demo(WorldBank, package = &quot;googleVis&quot;)
   </div>
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>An application of googleVis: the mplot package</h2>
   </hgroup>
@@ -356,8 +344,6 @@ require(mplot)
 
 <pre><code class="r">install.packages(&quot;mplot&quot;)
 </code></pre>
-
-<h3>Main functions</h3>
 
 <ul>
 <li><code>vis()</code> for <strong>variable inclusion</strong> and <strong>model stability</strong> plots</li>
@@ -376,7 +362,7 @@ require(mplot)
   </div>
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h3>Examples from the <code>mplot</code> package</h3>
   </hgroup>
@@ -389,14 +375,14 @@ plot(vis.d, which = &quot;vip&quot;)
 
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
 
-<!-- Thu Dec 10 18:01:26 2015 -->
+<!-- Thu Dec 10 23:04:23 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID56618ae17f9 () {
+function gvisDataLineChartID5668bb099a () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22436,8 +22422,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID56618ae17f9() {
-var data = gvisDataLineChartID56618ae17f9();
+function drawChartLineChartID5668bb099a() {
+var data = gvisDataLineChartID5668bb099a();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22458,7 +22444,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID56618ae17f9')
+    document.getElementById('LineChartID5668bb099a')
     );
     chart.draw(data,options);
     
@@ -22482,9 +22468,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID56618ae17f9);
+callbacks.push(drawChartLineChartID5668bb099a);
 })();
-function displayChartLineChartID56618ae17f9() {
+function displayChartLineChartID5668bb099a() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22510,12 +22496,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID56618ae17f9"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5668bb099a"></script>
  
 
 <!-- divChart -->
 
-<div id="LineChartID56618ae17f9" 
+<div id="LineChartID5668bb099a" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22527,7 +22513,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h3>Examples from the <code>mplot</code> package</h3>
   </hgroup>
@@ -22537,14 +22523,14 @@ callbacks.shift()();
 
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
 
-<!-- Thu Dec 10 18:01:29 2015 -->
+<!-- Thu Dec 10 23:04:26 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID56679529a45 () {
+function gvisDataBubbleChartID56634ad69ef () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23098,8 +23084,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID56679529a45() {
-var data = gvisDataBubbleChartID56679529a45();
+function drawChartBubbleChartID56634ad69ef() {
+var data = gvisDataBubbleChartID56634ad69ef();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -23124,7 +23110,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID56679529a45')
+    document.getElementById('BubbleChartID56634ad69ef')
     );
     chart.draw(data,options);
     
@@ -23148,9 +23134,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID56679529a45);
+callbacks.push(drawChartBubbleChartID56634ad69ef);
 })();
-function displayChartBubbleChartID56679529a45() {
+function displayChartBubbleChartID56634ad69ef() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23176,12 +23162,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56679529a45"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56634ad69ef"></script>
  
 
 <!-- divChart -->
 
-<div id="BubbleChartID56679529a45" 
+<div id="BubbleChartID56634ad69ef" 
   style="width: 800; height: 500;">
 </div>
 
@@ -23193,7 +23179,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h3>Examples from the <code>mplot</code> package</h3>
   </hgroup>
@@ -23204,14 +23190,14 @@ plot(af.d)
 
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
 
-<!-- Thu Dec 10 18:01:29 2015 -->
+<!-- Thu Dec 10 23:04:26 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID56659aa2c1e () {
+function gvisDataScatterChartID5662bd2061a () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -24092,8 +24078,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID56659aa2c1e() {
-var data = gvisDataScatterChartID56659aa2c1e();
+function drawChartScatterChartID5662bd2061a() {
+var data = gvisDataScatterChartID5662bd2061a();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -24108,7 +24094,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID56659aa2c1e')
+    document.getElementById('ScatterChartID5662bd2061a')
     );
     chart.draw(data,options);
     
@@ -24132,9 +24118,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID56659aa2c1e);
+callbacks.push(drawChartScatterChartID5662bd2061a);
 })();
-function displayChartScatterChartID56659aa2c1e() {
+function displayChartScatterChartID5662bd2061a() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -24160,12 +24146,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID56659aa2c1e"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5662bd2061a"></script>
  
 
 <!-- divChart -->
 
-<div id="ScatterChartID56659aa2c1e" 
+<div id="ScatterChartID5662bd2061a" 
   style="width: 850; height: 500;">
 </div>
 
@@ -24177,7 +24163,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>Limitations of googleVis</h2>
   </hgroup>
@@ -24198,7 +24184,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="segue" id="slide-17" style="background:;">
+<slide class="segue" id="slide-16" style="background:;">
   <hgroup>
     <h1>HTML widgets</h1>
   </hgroup>
@@ -24212,7 +24198,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>JavaScript meets R</h2>
   </hgroup>
@@ -24241,7 +24227,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <article data-timings="">
     <p><a href="http://hafen.github.io/htmlwidgetsgallery/">hafen.github.io/htmlwidgetsgallery <i class="fa fa-link"></i></a> </p>
 
@@ -24255,7 +24241,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>What&#39;s so great about htmlwidgets?</h2>
   </hgroup>
@@ -24282,7 +24268,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="segue" id="slide-21" style="background:;">
+<slide class="segue" id="slide-20" style="background:;">
   <hgroup>
     <h1>ggvis</h1>
   </hgroup>
@@ -24296,7 +24282,7 @@ callbacks.shift()();
   </div>
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>pipes: a fundamental new operator in R</h2>
   </hgroup>
@@ -24320,21 +24306,10 @@ awesome_data =
   </div>
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <article data-timings="">
     <pre><code class="r">require(magrittr)
-</code></pre>
-
-<pre><code>## Loading required package: magrittr
-## 
-## Attaching package: &#39;magrittr&#39;
-## 
-## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     extract
-</code></pre>
-
-<pre><code class="r">x = rnorm(10)
+x = rnorm(10)
 x %&gt;% max
 </code></pre>
 
@@ -24411,7 +24386,7 @@ x
   </div>
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>ggvis</h2>
   </hgroup>
@@ -24443,7 +24418,7 @@ x
   </div>
 </slide>
 
-<slide class="segue" id="slide-25" style="background:;">
+<slide class="segue" id="slide-24" style="background:;">
   <hgroup>
     <h1>Honourable mentions</h1>
   </hgroup>
@@ -24457,7 +24432,7 @@ x
   </div>
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h3><code>rCharts</code>: Interactive JS Charts from R</h3>
   </hgroup>
@@ -24484,6 +24459,28 @@ x
 <h3><code>rggobi</code>: Interface between R and GGobi</h3>
 
 <p>To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008-2.pdf">Wickham, Lawrence, Lang, Swayne (2008). &quot;An Introduction to rggobi&quot;, <em>R_News</em>, 8(2) 3-7</a>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  <div class='edit-button button-group'>
+    <!-- <a href="http://prose.io/#garthtarr/visR/edit/gh-pages/lectures/01/index.Rmd" class="button icon edit">Edit</a> -->
+    <a href='http://garthtarr.github.io/visR' class="button icon home" target="_self">Home</a>  
+  </div>
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h3><code>qtlcharts</code>: Interactive charts for QTL data</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img src = "qtl.gif"/></p>
+
+<pre><code class="r">install.packages(&quot;qtlcharts&quot;)
+</code></pre>
+
+<ul>
+<li><a href="http://kbroman.org/qtlcharts/">kbroman.org/qtlcharts</a></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -24577,6 +24574,8 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
 <li>Empower your collaborators to <strong>answer their own questions</strong></li>
 </ul>
 
+<p><img src="maxresdefault.jpg"/></p>
+
   </article>
   <!-- Presenter Notes -->
   <div class='edit-button button-group'>
@@ -24645,10 +24644,12 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
     <h2>Teach yourself Shiny</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>2.5 hour video</li>
+    <p><br></p>
+
+<ul>
+<li>2.5 hour long video</li>
 <li>7 very comprehensive lessons</li>
-<li><a href="http://shiny.rstudio.com/tutorial/">shiny.rstudio.com/tutorial</a></li>
+<li><a href="http://shiny.rstudio.com/tutorial/"><i class="fa fa-link"></i> shiny.rstudio.com/tutorial</a></li>
 </ul>
 
   </article>
@@ -24667,7 +24668,7 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
     <p><img src="CYOA-logo.jpg"/></p>
 
 <ol>
-<li><a href="labs/02/index.html">Play with a Shiny app</a></li>
+<li>Run through the <a href="lectures/01/DemoCode.R">lecture code</a> then <a href="labs/02/index.html">play with a Shiny app</a></li>
 <li><a href="labs/01/index.html">Build a Shiny app</a></li>
 </ol>
 
@@ -24698,11 +24699,11 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] magrittr_1.5        ggplot2_1.0.1       tidyr_0.3.1        
-##  [4] dplyr_0.4.3         readr_0.2.2         knitcitations_1.0.7
-##  [7] knitr_1.11          mplot_0.7.7         edgebundleR_0.1.2  
-## [10] pairsD3_0.1.0       shiny_0.12.2        ggvis_0.4.2.9000   
-## [13] rCharts_0.4.5       d3heatmap_0.6.1    
+##  [1] d3heatmap_0.6.1     qtlcharts_0.5-25    magrittr_1.5       
+##  [4] ggplot2_1.0.1       tidyr_0.3.1         dplyr_0.4.3        
+##  [7] readr_0.2.2         knitcitations_1.0.7 knitr_1.11         
+## [10] mplot_0.7.7         edgebundleR_0.1.2   pairsD3_0.1.0      
+## [13] shiny_0.12.2        ggvis_0.4.2.9000    rCharts_0.4.5      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] poirot_0.0.2         reshape2_1.4.1       lattice_0.20-33     
@@ -24758,7 +24759,7 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='NA'>
+        data-slide=4 title='We are living in the future'>
          4
       </a>
     </li>
@@ -24776,37 +24777,37 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='We are living in the future'>
+        data-slide=7 title='googleVis'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='googleVis'>
+        data-slide=8 title='Overview of googleVis'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Overview of googleVis'>
+        data-slide=9 title='NA'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='NA'>
+        data-slide=10 title='Key googleVis functions'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Key googleVis functions'>
+        data-slide=11 title='An application of googleVis: the mplot package'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='An application of googleVis: the mplot package'>
+        data-slide=12 title='Examples from the <code>mplot</code> package'>
          12
       </a>
     </li>
@@ -24824,73 +24825,73 @@ shiny::runGitHub(&quot;robnetwork&quot;, &quot;garthtarr&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Examples from the <code>mplot</code> package'>
+        data-slide=15 title='Limitations of googleVis'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Limitations of googleVis'>
+        data-slide=16 title='HTML widgets'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='HTML widgets'>
+        data-slide=17 title='JavaScript meets R'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='JavaScript meets R'>
+        data-slide=18 title='NA'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='NA'>
+        data-slide=19 title='What&#39;s so great about htmlwidgets?'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='What&#39;s so great about htmlwidgets?'>
+        data-slide=20 title='ggvis'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='ggvis'>
+        data-slide=21 title='pipes: a fundamental new operator in R'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='pipes: a fundamental new operator in R'>
+        data-slide=22 title='NA'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='NA'>
+        data-slide=23 title='ggvis'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='ggvis'>
+        data-slide=24 title='Honourable mentions'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Honourable mentions'>
+        data-slide=25 title='<code>rCharts</code>: Interactive JS Charts from R'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='<code>rCharts</code>: Interactive JS Charts from R'>
+        data-slide=26 title='<code>qtlcharts</code>: Interactive charts for QTL data'>
          26
       </a>
     </li>

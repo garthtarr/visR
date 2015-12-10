@@ -69,9 +69,11 @@ It may not be long before presentations with static plots are as old fashioned a
 <img src = "ohp.png" width=700 />
 
 
----
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aXV-yaFmQNk" frameborder="0" allowfullscreen></iframe>
+
+--- .segue
+
+# We are living in the future
 
 --- 
 
@@ -79,9 +81,6 @@ It may not be long before presentations with static plots are as old fashioned a
 
 <img src="Cat-Playing-Game-on-iPad.gif" height=500 /> <img src="QAyXWuC.gif" height=500 />
 
---- .segue
-
-# We are living in the future
 
 --- .segue
 
@@ -174,8 +173,6 @@ require(mplot)
 ```{r eval=FALSE}
 install.packages("mplot")
 ```
-
-### Main functions
 
 - `vis()` for **variable inclusion** and **model stability** plots
 - `af()` for the **adaptive fence**
@@ -377,6 +374,18 @@ install.packages("plotly")
 
 To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008-2.pdf">Wickham, Lawrence, Lang, Swayne (2008). "An Introduction to rggobi", *R_News*, 8(2) 3-7</a>.
 
+---
+
+### `qtlcharts`: Interactive charts for QTL data
+
+<img src = "qtl.gif"/>
+
+```{r, eval=FALSE}
+install.packages("qtlcharts")
+```
+
+- [kbroman.org/qtlcharts](http://kbroman.org/qtlcharts/)
+
 --- .segue
 
 # Shiny: the democratisation of R
@@ -423,6 +432,8 @@ Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetw
 - Share the power of R with non R users 
 - Empower your collaborators to **answer their own questions**
 
+<img src="maxresdefault.jpg"/>
+
 ---
 
 
@@ -464,9 +475,11 @@ shiny::runGitHub('robnetwork', 'garthtarr')
 
 ## Teach yourself Shiny
 
-- 2.5 hour video
+<br>
+
+- 2.5 hour long video
 - 7 very comprehensive lessons
-- [shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
+- [<i class="fa fa-link"></i> shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
 
 
 --- 
@@ -475,7 +488,7 @@ shiny::runGitHub('robnetwork', 'garthtarr')
 
 <img src="CYOA-logo.jpg"/>
 
-1. [Play with a Shiny app](labs/02/index.html)
+1. Run through the [lecture code](lectures/01/DemoCode.R) then [play with a Shiny app](labs/02/index.html)
 2. [Build a Shiny app](labs/01/index.html)
 
 

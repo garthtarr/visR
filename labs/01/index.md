@@ -87,18 +87,6 @@ Look at one gene **LEU1**:
 
 ```r
 library(ggplot2)
-```
-
-```
-## 
-## Attaching package: 'ggplot2'
-## 
-## The following object is masked from 'package:ggvis':
-## 
-##     resolution
-```
-
-```r
 cleaned_data %>%
   filter(name == "LEU1") %>%
   ggplot(aes(rate, expression, color = nutrient)) +
