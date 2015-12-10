@@ -87,7 +87,7 @@ It may not be long before presentations with static plots are as old fashioned a
 
 # We are living in the future
 
-<div align="right"><font color="white" size=6>Why are our graphics living in the past?</font></div>
+<div align="right"><font color="white" size=6>Why are our plots living in the past?</font></div>
 
 --- .segue
 
@@ -341,6 +341,7 @@ x
 
 - Not as simple as changing `ggplot()` to `ggvis()`
 - Under development - not quite production ready yet
+- It can't facet (yet)
 - Recently on twitter [@hadleywickham](https://twitter.com/hadleywickham) commented "goal is for 2016 to be the year of ggvis"
 
 <br>
@@ -388,7 +389,7 @@ To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008
 
 ---
 
-## How did I get started Shiny?
+## How did I get started with Shiny?
 
 <br>
 
@@ -399,7 +400,7 @@ I wanted a way to **interactively explore** the results of a mega-simulation stu
 
 ---
 
-## Graphical Newtork Example
+## Graphical newtork example
 
 Try loading it from GitHub:
 
@@ -464,7 +465,7 @@ shiny::runGitHub('robnetwork', 'garthtarr')
 ## Teach yourself Shiny
 
 - 2.5 hour video
-- 7 lessons
+- 7 very comprehensive lessons
 - [shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
 
 

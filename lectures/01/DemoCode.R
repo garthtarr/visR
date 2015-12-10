@@ -27,6 +27,7 @@ forceNetwork(Links = MisLinks, Nodes = MisNodes,
 
 #### edgebundleR ####
 
+# install.packages("edgebundleR")
 require(edgebundleR)
 # symmetric matrix
 require(MASS)
@@ -41,6 +42,7 @@ edgebundle(ws_graph,tension = 0.1,fontsize = 18,padding=40)
 
 ### dygraphs ####
 
+# install.packages(c("dygraphs","huge"))
 require(dygraphs)
 require(huge)
 data(stockdata)
@@ -56,20 +58,13 @@ dygraph(xts.fn(X[,1:2])) %>%
 
 ### d3heatmaps ###
 
-round(cor(x),1)
 # optional: visualise the correlation matrix
 # install.packages("d3heatmap")
 # I've submitted a pull request to add minVal and maxVal options
-# devtools::install_github("garthtarr/d3heatmap")
-# d3heatmap::d3heatmap(cor(x), minVal = -1, maxVal = 1)
-cormat = cor(x)-diag(rep(1,33))
-table(cormat>0.8)
-which(cormat>0.8)
-cormat[377]
-cor(x[,12],x[,14])
-# alternatively
-# cordf = as.data.frame(as.table(cormat))
-# subset(cordf, abs(Freq) > 0.8)
+devtools::install_github("garthtarr/d3heatmap")
+require(d3heatmap)
+cmat = cor(X[,1:100])
+d3heatmap(cmat, minVal = -1, maxVal = 1)
 
 ### rcharts ###
 
@@ -100,7 +95,6 @@ mtcars %>%
   layer_smooths(span = input_slider(0.3, 1, value = 0.5,label="Smoothing")) %>%
   layer_points(opacity := input_slider(0, 1, label="Opacity"))
 
-
 #### shiny ####
 
 require(pairsD3)
@@ -108,7 +102,7 @@ shinypairs(swiss)
 require(edgebundleR)
 shinyedge(ws_graph)
 require(mplot)
-load(url("http://garthtarr.com/dbeg.RData"))
+load(url("http://www.maths.usyd.edu.au/u/gartht/dbeg.RData"))
 # makes available objects full.mod, af1, v1 and bgn1
 mplot(full.mod,af1,v1,bgn1)
 # Alternatively there's a version hosted here:
