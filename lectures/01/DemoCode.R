@@ -21,8 +21,6 @@ require(WDI)
 load("lectures/01/worldbankdata.RData")
 plot(M)
 
-
-
 #### pairsD3 ####
 
 # install.packages("pairsD3")
@@ -40,7 +38,6 @@ forceNetwork(Links = MisLinks, Nodes = MisNodes,
              Value = "value", NodeID = "name",
              Group = "group", opacity = 0.8,linkColour = gray(0.8))
 
-
 #### edgebundleR ####
 
 require(edgebundleR)
@@ -54,6 +51,38 @@ edgebundle(cor(X),cutoff=0.2,tension=0.8,fontsize = 14)
 require(igraph)
 ws_graph <- watts.strogatz.game(1, 50, 4, 0.05)
 edgebundle(ws_graph,tension = 0.1,fontsize = 18,padding=40)
+
+### dygraphs ####
+
+require(dygraphs)
+require(huge)
+data(stockdata)
+X = log(stockdata$data[2:1258,]/stockdata$data[1:1257,])
+colnames(X) = stockdata$info[,3]
+load(url("http://garthtarr.com/stockdatatimes.Rdata"))
+require(xts)
+xts.fn = function(x){
+  xts(x,order.by=times[-1],frequency=365)
+}
+dygraph(xts.fn(X[,1:2])) %>% 
+  dyRangeSelector()
+
+### d3heatmaps ###
+
+round(cor(x),1)
+# optional: visualise the correlation matrix
+# install.packages("d3heatmap")
+# I've submitted a pull request to add minVal and maxVal options
+# devtools::install_github("garthtarr/d3heatmap")
+# d3heatmap::d3heatmap(cor(x), minVal = -1, maxVal = 1)
+cormat = cor(x)-diag(rep(1,33))
+table(cormat>0.8)
+which(cormat>0.8)
+cormat[377]
+cor(x[,12],x[,14])
+# alternatively
+# cordf = as.data.frame(as.table(cormat))
+# subset(cordf, abs(Freq) > 0.8)
 
 ### rcharts ###
 
@@ -72,20 +101,29 @@ nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male,
 
 # install.packages("ggvis")
 require(ggvis)
-mtcars %>% ggvis(x = ~wt, y = ~mpg) %>% 
-  layer_points() %>% 
-  add_tooltip(function(x) paste("wt:", x$wt,"\nmpg:",x$mpg))
 faithful %>% ggvis(~eruptions) %>% layer_histograms() 
 pressure %>% ggvis(~temperature, ~pressure) %>% layer_lines()
+# tooltips
+mtcars %>% ggvis(x = ~wt, y = ~mpg) %>% 
+  layer_points() %>% 
+  add_tooltip(function(x) paste("wt:", x$wt," mpg:",x$mpg))
 # interactivity
 mtcars %>%
   ggvis(~wt, ~mpg) %>%
-  layer_smooths(span = input_slider(0.5, 1, value = 1)) %>%
-  layer_points(opacity := input_slider(0, 1))
+  layer_smooths(span = input_slider(0.3, 1, value = 0.5,label="Smoothing")) %>%
+  layer_points(opacity := input_slider(0, 1, label="Opacity"))
+
 
 #### shiny ####
 
+require(pairsD3)
 shinypairs(swiss)
+require(edgebundleR)
 shinyedge(ws_graph)
+require(mplot)
+load(url("http://garthtarr.com/dbeg.RData"))
+# makes available objects full.mod, af1, v1 and bgn1
+mplot(full.mod,af1,v1,bgn1)
+# Alternatively there's a version hosted here:
+# http://garthtarr.com/apps/mplot
 
-mplot()

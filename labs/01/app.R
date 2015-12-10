@@ -3,7 +3,7 @@ require(readr)
 require(dplyr)
 require(tidyr)
 require(ggplot2)
-original_data = read_delim("~/Downloads/Brauer2008_DataSet1.tds", 
+original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", 
                            delim="\t")
 cleaned_data = original_data %>%
   separate(NAME, 

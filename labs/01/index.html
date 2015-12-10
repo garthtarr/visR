@@ -58,7 +58,7 @@
         <h2>Case study: gene expression in starvation</h2>
 <p>Through the process of gene regulation, a cell can control which genes are transcribed from DNA to RNA- what we call being &quot;expressed&quot;. (If a gene is never turned into RNA, it may as well not be there at all). This provides a sort of &quot;cellular switchboard&quot; that can activate some systems and deactivate others, which can speed up or slow down growth, switch what nutrients are transported into or out of the cell, and respond to other stimuli. A gene expression microarray lets us measure how much of each gene is expressed in a particular condition. We can use this to figure out the function of a specific gene (based on when it turns on and off), or to get an overall picture of the cell&#39;s activity.</p>
 
-<p>Brauer 2008 used microarrays to test the effect of starvation and growth rate on baker’s yeast (S. cerevisiae, a popular model organism for studying molecular genomics because of its simplicity). Basically, if you give yeast plenty of nutrients (a rich media), except that you sharply restrict its supply of one nutrient, you can control the growth rate to whatever level you desire (we do this with a tool called a chemostat). For example, you could limit the yeast&#39;s supply of glucose (sugar, which the cell metabolizes to get energy and carbon), of leucine (an essential amino acid), or of ammonium (a source of nitrogen).</p>
+<p>Brauer (2008) used microarrays to test the effect of starvation and growth rate on baker’s yeast (S. cerevisiae, a popular model organism for studying molecular genomics because of its simplicity). Basically, if you give yeast plenty of nutrients (a rich media), except that you sharply restrict its supply of one nutrient, you can control the growth rate to whatever level you desire (we do this with a tool called a chemostat). For example, you could limit the yeast&#39;s supply of glucose (sugar, which the cell metabolizes to get energy and carbon), of leucine (an essential amino acid), or of ammonium (a source of nitrogen).</p>
 
 <p>&quot;Starving&quot; the yeast of these nutrients lets us find genes that:</p>
 
@@ -75,7 +75,7 @@
 <h3>Get the data and tidy it</h3>
 
 <pre><code class="r">require(readr)
-original_data = read_delim(&quot;https://raw.githubusercontent.com/garthtarr/visR/gh-pages/Brauer2008_DataSet1.tds&quot;, 
+original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, 
     delim = &quot;\t&quot;)
 ## View(original_data)  # opens a spreadsheet view in RStudio
 dim(original_data)
@@ -87,8 +87,28 @@ dim(original_data)
 <p>Fix the name column by splitting on <code>||</code>, remove white space and drop unecessary variables.  We also want to ensure that we have <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> -- each variable should be one column - the column headers are values not variable names.</p>
 
 <pre><code class="r">require(dplyr)
-require(tidyr)
-cleaned_data = original_data %&gt;%
+</code></pre>
+
+<pre><code>## Loading required package: dplyr
+## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+</code></pre>
+
+<pre><code class="r">require(tidyr)
+</code></pre>
+
+<pre><code>## Loading required package: tidyr
+</code></pre>
+
+<pre><code class="r">cleaned_data = original_data %&gt;%
   separate(NAME, 
            c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, &quot;number&quot;), 
            sep = &quot;\\|\\|&quot;) %&gt;%
@@ -96,12 +116,14 @@ cleaned_data = original_data %&gt;%
   select(-number, -GID, -YORF, -GWEIGHT)  %&gt;%
   gather(sample, expression, G0.05:U0.3) %&gt;%
   separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
+names(cleaned_data)
 </code></pre>
 
-<pre><code>## Error in select(., -number, -GID, -YORF, -GWEIGHT): unused arguments (-number, -GID, -YORF, -GWEIGHT)
+<pre><code>## [1] &quot;name&quot;            &quot;BP&quot;              &quot;MF&quot;              &quot;systematic_name&quot;
+## [5] &quot;nutrient&quot;        &quot;rate&quot;            &quot;expression&quot;
 </code></pre>
 
-<p>The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the <strong>magrittr</strong> package for details).  The <code>gather()</code> function <strong>melts</strong> the data - instead of one row per gene, we now have one row per gene per sample.  We&#39;ve <strong>gathered</strong> 36 columns together into two variables.</p>
+<p>The above code chunk is doing a lot of processing very sucinctly using the pipe operator (see the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html"><code>magrittr</code></a> package for details).  The <code>gather()</code> function <strong>melts</strong> the data - instead of one row per gene, we now have one row per gene per <code>sample</code>.  We&#39;ve <strong>gathered</strong> 36 columns together into two variables (<code>expression</code> and <code>sample</code>) then <strong>separated</strong> <code>sample</code> out into two variables (<code>nutrient</code> and <code>rate</code>).  Note that <code>sample</code> never appears in the final output... the wonders of the pipe (<code>%&gt;%</code>) operator.</p>
 
 <h3>Visualise the data</h3>
 
@@ -114,8 +136,7 @@ cleaned_data %&gt;%
   geom_line()
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
@@ -124,8 +145,7 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-4-2.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
@@ -135,8 +155,7 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-4-3.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;sulfur metabolism&quot;) %&gt;%
@@ -146,33 +165,103 @@ cleaned_data %&gt;%
   facet_wrap(~name + systematic_name, scales = &quot;free_y&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;cleaned_data&#39; not found
+<p><img src="assets/fig/unnamed-chunk-4-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+<h2>Instructions</h2>
+
+<ul>
+<li>Create a new shiny app in RStudio by going File &gt; New Project &gt; New Directory &gt; Shiny Web Application &gt; Give your project a name and hit create (open in a new window might be a good idea too).</li>
+<li>Create a new file in the shiny app directory called <code>global.R</code></li>
+<li>Paste the following data processing code into <code>global.R</code></li>
+</ul>
+
+<pre><code class="r">### Data preparation
+require(readr)
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, 
+    delim = &quot;\t&quot;)
+cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, 
+    &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% mutate_each(funs(trimws), name:systematic_name) %&gt;% 
+    select(-number, -GID, -YORF, -GWEIGHT) %&gt;% gather(sample, expression, G0.05:U0.3) %&gt;% 
+    separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
 </code></pre>
 
-<h2>Basic</h2>
+<ul>
+<li>Whatever&#39;s in <code>global.R</code> will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as <code>ui.R</code>, <code>server.R</code> and <code>global.R</code> then simplify the <code>read_delim()</code> function to refer to just <code>Brauer2008_DataSet1.tds</code> (without loading it over the internet every time).</li>
+<li>Run the app to make sure it&#39;s working in this basic form.</li>
+<li>Replace the default plot with the first plot we generated above showing results for the <strong>LEU1</strong> gene. Make sure this is working by running the app before proceeding any further.</li>
+</ul>
 
-<h3>Reimplement the above plots in ggvis</h3>
+<p>You want this in the <code>server.R</code> file</p>
 
-<h3>Play with htmlwidgets</h3>
+<pre><code class="r">output$plot1 = renderPlot({
+    cleaned_data %&gt;% filter(name == &quot;LEU1&quot;) %&gt;% ggplot(aes(rate, expression, 
+        color = nutrient)) + geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + 
+        systematic_name)
+})
+</code></pre>
 
-<p>E.g. pairsD3, d3heatmap, ... </p>
+<p>And this in the mainPanel part of the <code>ui.R</code> function:</p>
 
-<h2>Intermediate: Shiny app</h2>
+<pre><code class="r">plotOutput(&quot;plot1&quot;)
+</code></pre>
 
-<p>Take an example shiny app that has ggplot2 graphics and reimplement it with ggvis.</p>
+<ul>
+<li>We want to be able to explore different genes instead of just having the <strong>LEU1</strong> gene plotted.  To do this we need a drop down menu and then we need to feed the results of that drop down menu into the plot.  Add this code chunk to the sidebarPanel section in the <code>ui.R</code> file:</li>
+</ul>
 
-<p>Convert <a href="https://raw.githubusercontent.com/garthtarr/visR/gh-pages/labs/01/app.R">this</a> shiny app from <code>ggplot2</code> to <code>ggvis</code>.  The aim here is two fold: </p>
+<pre><code class="r">selectizeInput(inputId = &quot;gene&quot;, label = &quot;Select gene&quot;, choices = sort(unique(cleaned_data$name)), 
+    selected = &quot;LEU1&quot;, multiple = FALSE)
+</code></pre>
 
-<ol>
-<li>Understand how the components link within the <code>shiny</code> app; and</li>
-<li>Move beyond static plots with <code>ggvis</code>.</li>
-</ol>
+<ul>
+<li>Run to app again to see if it works.  You should get a menu showing up on the left hand side listing all the genes.  This is what the <code>selectizeInput</code> function does - it takes a bunch of <code>choices</code> and offers them to the user as a dropdown list if <code>multiple=FALSE</code> (or a bit fancier where you can select multiple values <code>multiple=TRUE</code>).</li>
+<li>Now we need to link the selected gene to the plot.  The selected gene will be accessible though <code>input$gene</code>.  To explain this, <code>input</code> is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name <code>gene</code> using the <code>inputId</code> argument to the <code>selectizeInput</code> function.  In the <code>server.R</code> function update the plot function to the following:</li>
+</ul>
 
-<p>Try adding a line of best fit using <code>geom_smooth()</code> in <code>ggplot2</code> or <code>layer_model_predictions()</code> in <code>ggvis</code>.</p>
+<pre><code class="r">output$plot1 = renderPlot({
+    filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, expression, color = nutrient)) + 
+        geom_line() + theme_bw(base_size = 14) + facet_wrap(~name + systematic_name)
+})
+</code></pre>
 
-<h2>Advanced: Add functionality to the shiny app</h2>
+<ul>
+<li><p>What if we wanted to plot multiple genes?  Try changing <code>multiple=TRUE</code> in the selectize input and seeing what happens.  It probably won&#39;t work when multiple genes are selected.  We need to update out filtering in the <code>server.R</code> function to account for multiple gene options.  Something like <code>filter(is.element(name, input$gene))</code> should do the trick.</p></li>
+<li><p>What if we wanted to have the option of a line of best fit?  Add in a checkbox to the sidebarPanel so that your sidebarPanel function should now look like this:</p></li>
+</ul>
 
-<p>Add analytics to the shiny app and add in some htmlwidgets.</p>
+<pre><code class="r">sidebarPanel(selectizeInput(inputId = &quot;gene&quot;, label = &quot;Select gene(s)&quot;, choices = sort(unique(cleaned_data$name)), 
+    selected = &quot;LEU1&quot;, multiple = TRUE), checkboxInput(inputId = &quot;line&quot;, label = &quot;Add line of best fit?&quot;, 
+    value = FALSE))
+</code></pre>
+
+<ul>
+<li>Think about how to incorporate this logical input into the <code>server.R</code> code.  When the checkbox is ticked <code>input$line</code> will return a value of <code>TRUE</code>.  When unticked, <code>input$line</code> returns a value of <code>FALSE</code>.  It makes sense to use an <code>if</code> statement to get two different behaviours.  In the <code>server.R</code> adapt your code to something like:</li>
+</ul>
+
+<pre><code class="r">output$plot1 = renderPlot({
+    if (input$line) {
+        cleaned_data %&gt;% filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, 
+            expression, color = nutrient)) + geom_point() + theme_bw(base_size = 14) + 
+            geom_smooth(method = &quot;lm&quot;, se = FALSE) + facet_wrap(~name)
+    } else {
+        cleaned_data %&gt;% filter(is.element(name, input$gene)) %&gt;% ggplot(aes(rate, 
+            expression, color = nutrient)) + geom_line() + theme_bw(base_size = 14) + 
+            facet_wrap(~name + systematic_name)
+    }
+})
+</code></pre>
+
+<ul>
+<li>OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).</li>
+<li>What if we wanted to be able to select all the genes related to a particular biological process.  We&#39;ll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using <code>tabsetPanel</code> in the <code>ui.R</code> file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.</li>
+</ul>
+
+<h3>Suggested solution</h3>
+
+<p>See <a href="https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp">here</a>. Try not to cheat, unless you really have to.</p>
 
 <h2>Reference</h2>
 

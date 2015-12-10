@@ -20,10 +20,10 @@ widgets  : [bootstrap, mathjax]
 <br> 
 
 - Importance of visualising data
-- Key packages
-    - googleVis
-    - htmlwidgets
-    - ggvis
+- Interactive graphics in R
+    - `googleVis`
+    - `htmlwidgets`
+    - `ggvis`
 - Shiny
 - Your turn
 
@@ -40,8 +40,28 @@ widgets  : [bootstrap, mathjax]
 It may not be long before presentations with static plots are as old fashioned as whipping out your overhead transparencies.
 
 
-<img src = "ohp.png" width=600 />
+<img src = "ohp.png" width=700 />
 
+
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aXV-yaFmQNk" frameborder="0" allowfullscreen></iframe>
+
+--- 
+
+## Gratuitous kittens
+
+<img src="Cat-Playing-Game-on-iPad.gif" height=500 /> <img src="QAyXWuC.gif" height=500 />
+
+--- .segue
+
+# We are living in the future
+
+--- .segue
+
+# We are living in the future
+
+<div align="right"><font color="white" size=6>Why are our graphics living in the past?</font></div>
 
 --- .segue
 
@@ -51,15 +71,24 @@ It may not be long before presentations with static plots are as old fashioned a
 
 ## Overview of googleVis
 
+
+```r
+install.packages("googleVis")
+require(googleVis)
+demo(WorldBank, package = "googleVis")
+```
+
+<br>
+
 - [Markus Gesmann](http://www.magesblog.com/) created the [`googleVis`](https://github.com/mages/googleVis) package which accesses  the [Google Chart API](https://developers.google.com/chart/)  directly from R
 
 - The functions of the package allow users to visualise data with the Google Chart Tools **without uploading their data to Google**
 
-- The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google
+- The output of googleVis functions is **html code** that contains the data and references to JavaScript functions hosted by Google
 
-- **Limitation**: requires internet access to work and some charts require Flash.
+<br>
 
-See also: **Using the Google Visualisation API with R**, 
+Using the Google Visualisation API with R, 
   [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
 
 ---
@@ -105,6 +134,35 @@ See also: **Using the Google Visualisation API with R**,
 
 --- 
 
+## An application of googleVis: the mplot package
+
+### Get it on GitHub <i class="fa fa-github"></i>
+
+
+```r
+install.packages("devtools")
+devtools::install_github("garthtarr/mplot")
+require(mplot)
+```
+
+### ... or get it on CRAN
+
+
+```r
+install.packages("mplot")
+```
+
+### Main functions
+
+- `vis()` for **variable inclusion** and **model stability** plots
+- `af()` for the **adaptive fence**
+- `bglmnet()` for **bootstrapping glmnet**
+- `mplot()` for an interactive **shiny interface**
+
+Tarr G, Mueller S and Welsh AH (2015). “mplot: An R package for graphical model stability and variable selection.” <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>.
+
+---
+
 ### Examples from the `mplot` package
 
 
@@ -115,14 +173,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Sun Dec  6 21:27:07 2015 -->
+<!-- Thu Dec 10 14:28:07 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID20f961d3d725 () {
+function gvisDataLineChartID107ce214b5aaf () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22162,8 +22220,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID20f961d3d725() {
-var data = gvisDataLineChartID20f961d3d725();
+function drawChartLineChartID107ce214b5aaf() {
+var data = gvisDataLineChartID107ce214b5aaf();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22184,7 +22242,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID20f961d3d725')
+    document.getElementById('LineChartID107ce214b5aaf')
     );
     chart.draw(data,options);
     
@@ -22208,9 +22266,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID20f961d3d725);
+callbacks.push(drawChartLineChartID107ce214b5aaf);
 })();
-function displayChartLineChartID20f961d3d725() {
+function displayChartLineChartID107ce214b5aaf() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22234,11 +22292,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID20f961d3d725"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID107ce214b5aaf"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID20f961d3d725" 
+<div id="LineChartID107ce214b5aaf" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22251,14 +22309,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Sun Dec  6 21:27:10 2015 -->
+<!-- Thu Dec 10 14:28:11 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID20f9367c7cb1 () {
+function gvisDataBubbleChartID107ce660ebd0b () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22812,8 +22870,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID20f9367c7cb1() {
-var data = gvisDataBubbleChartID20f9367c7cb1();
+function drawChartBubbleChartID107ce660ebd0b() {
+var data = gvisDataBubbleChartID107ce660ebd0b();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22838,7 +22896,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID20f9367c7cb1')
+    document.getElementById('BubbleChartID107ce660ebd0b')
     );
     chart.draw(data,options);
     
@@ -22862,9 +22920,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID20f9367c7cb1);
+callbacks.push(drawChartBubbleChartID107ce660ebd0b);
 })();
-function displayChartBubbleChartID20f9367c7cb1() {
+function displayChartBubbleChartID107ce660ebd0b() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22888,11 +22946,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID20f9367c7cb1"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID107ce660ebd0b"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID20f9367c7cb1" 
+<div id="BubbleChartID107ce660ebd0b" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22906,14 +22964,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Sun Dec  6 21:27:10 2015 -->
+<!-- Thu Dec 10 14:28:11 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID20f97eff2b1b () {
+function gvisDataScatterChartID107ce797c22fe () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23794,8 +23852,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID20f97eff2b1b() {
-var data = gvisDataScatterChartID20f97eff2b1b();
+function drawChartScatterChartID107ce797c22fe() {
+var data = gvisDataScatterChartID107ce797c22fe();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23810,7 +23868,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID20f97eff2b1b')
+    document.getElementById('ScatterChartID107ce797c22fe')
     );
     chart.draw(data,options);
     
@@ -23834,9 +23892,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID20f97eff2b1b);
+callbacks.push(drawChartScatterChartID107ce797c22fe);
 })();
-function displayChartScatterChartID20f97eff2b1b() {
+function displayChartScatterChartID107ce797c22fe() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23860,14 +23918,23 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID20f97eff2b1b"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID107ce797c22fe"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID20f97eff2b1b" 
+<div id="ScatterChartID107ce797c22fe" 
   style="width: 850; height: 500;">
 </div>
 
+--- 
+
+## Limitations of googleVis
+
+<br>
+
+- Requires **internet access** to work 
+- some charts require **Flash**
+- not very customisable
 
 --- .segue
 
@@ -23889,6 +23956,7 @@ Some examples:
 - [`dygraphs`](https://rstudio.github.io/dygraphs/): charting time-series data
 - [`leaflet`](https://rstudio.github.io/leaflet/): dynamic maps
 - [`DT`](https://rstudio.github.io/DT/): interactive HTML data tables
+- [`rpivotTable`](https://github.com/smartinsightsfromdata/rpivotTable): build pivot tables to dynamically slice, dice and plot your data
 
 ---
 
@@ -23896,37 +23964,211 @@ Some examples:
 
 <img src="htmlwidgets.png" height=800px />
 
+
+--- 
+
+## What's so great about htmlwidgets?
+
+<br>
+
+- most will work without internet access
+- customisable (sort of)
+- active community
+    - some packages are backed by RStudio
+    - Kent Russel ([@timelyportfolio](https://twitter.com/timelyportfolio)) has made one widget each week this year
+- if you're keen you can make your own... it's _relatively_ easy to adapt any of the multitude of [D3 examples](https://github.com/mbostock/d3/wiki/Gallery)
+
 --- .segue
 
 # ggvis
 
 ---
 
+## pipes: a fundamental new operator in R
+
+<img src="Z.jpg" />
+
+
+```r
+install.packages("magrittr")
+require(magrittr)
+awesome_data =
+  raw_interesting_data %>%
+  transform(somehow) %>%
+  filter(the_good_parts) %>%
+  finalize
+```
+
+--- pipes: a fundamental new operator in R
+
+
+```r
+require(magrittr)
+```
+
+```
+## Loading required package: magrittr
+## 
+## Attaching package: 'magrittr'
+## 
+## The following object is masked from 'package:tidyr':
+## 
+##     extract
+```
+
+```r
+x = rnorm(10)
+x %>% max
+```
+
+```
+## [1] 1.405986
+```
+
+```r
+max(x)
+```
+
+```
+## [1] 1.405986
+```
+
+```r
+x %>% sort
+```
+
+```
+##  [1] -0.97010061 -0.74849748 -0.60678533 -0.38610363 -0.03629047
+##  [6]  0.01187292  0.42919359  0.65649122  0.78735912  1.40598620
+```
+
+```r
+sort(x)
+```
+
+```
+##  [1] -0.97010061 -0.74849748 -0.60678533 -0.38610363 -0.03629047
+##  [6]  0.01187292  0.42919359  0.65649122  0.78735912  1.40598620
+```
+
+```r
+x %>% sort %>% round(1)
+```
+
+```
+##  [1] -1.0 -0.7 -0.6 -0.4  0.0  0.0  0.4  0.7  0.8  1.4
+```
+
+```r
+round(sort(x), 1)
+```
+
+```
+##  [1] -1.0 -0.7 -0.6 -0.4  0.0  0.0  0.4  0.7  0.8  1.4
+```
+
+```r
+x %>% sort %>% round(1) %>% plot
+```
+
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png) 
+
+```r
+plot(round(sort(x), 1))
+```
+
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-2.png) 
+
+Similar to [JavaScript's chaining](http://alignedleft.com/tutorials/d3/chaining-methods):
+
+```
+d3.select("body")
+    .append("p")
+    .text("New paragraph!");
+```
+
+### Compund assignment `%<>%`
+
+
+```r
+x %<>% sort %>% round(1)
+x
+```
+
+```
+##  [1] -1.0 -0.7 -0.6 -0.4  0.0  0.0  0.4  0.7  0.8  1.4
+```
+
+<br>
+
+[Read more](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+
+---
+
 ## ggvis
 
 - Web based incarnation of ggplot2 (svg or canvas)
-- Interactivity
-- Under development. Recently on twitter @hadleywickham commented "goal is for 2016 to be the year of ggvis"
+- Enables simple interactivity (e.g. tooltips)
+- Advanced interactivity requires an R instance in the background (e.g. using sliders to change parameters)
+
+<br>
+
+- Not as simple as changing `ggplot()` to `ggvis()`
+- Under development - not quite production ready yet
+- Recently on twitter [@hadleywickham](https://twitter.com/hadleywickham) commented "goal is for 2016 to be the year of ggvis"
+
+<br>
+
+Read more: [ggvis.rstudio.com](http://ggvis.rstudio.com/)
+
+--- .segue
+
+Honourable mentions
+
+--- 
+
+### `rCharts`: Interactive JS Charts from R
 
 
----
+```r
+devtools::install_github("ramnathv/rCharts")
+```
 
+- [rcharts.io](http://rcharts.io)
+- Documentation is (currently) extremely limited
+
+### `plotly`:  Interactive Graphics via Plotly's JS Graphing Library
+
+
+```r
+install.packages("plotly")
+```
+
+- [plot.ly/r](https://plot.ly/r)
+- takes a ggplot 2 object and converts it to an interactive chart
+- requires authentication
+
+### `rggobi`: Interface between R and GGobi
+
+To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008-2.pdf">Wickham, Lawrence, Lang, Swayne (2008). "An Introduction to rggobi", *R_News*, 8(2) 3-7</a>.
+
+--- .segue
 
 # Shiny: the democratisation of R
 
-
 ---
-
 
 ## What is Shiny?
 
-<a href="http://shiny.rstudio.com/"><img src="images/shiny.png" alt="" style="height:650px"></a>
+<a href="http://shiny.rstudio.com/"><img src="shiny.png" alt="" style="height:650px"></a>
+
+---
 
 ## How did I get started?
 
 I wanted a way to interactively explore the results of a mega-simulation study from my thesis.
 
-[spark.rstudio.com/garthtarr/n50](http://spark.rstudio.com/garthtarr/n50/)
+[garthtarr.com/apps/n50](http://garthtarr.com/apps/n50/)
 
 
 ---
@@ -23935,6 +24177,14 @@ I wanted a way to interactively explore the results of a mega-simulation study f
 
 <div align="right"><a href="https://garthtarr.shinyapps.io/network/"><font color="white">Shinyapps.io </font><i class="fa fa-link fa-inverse"></i></a></div>
 <div align="right"><a href="https://github.com/garthtarr/network"><font color="white">Github </font><i class="fa fa-github fa-inverse"></i></a></div>
+
+--- 
+
+## Why is Shiny awesome?
+
+- No special HTML or JavaScript knowledge required
+- Share the power of R with non R users 
+- Empower your collaborators to answer their own questions
 
 
 ---
@@ -23959,7 +24209,9 @@ shiny::runGitHub('network', 'garthtarr')
 
 More info: http://shiny.rstudio.com/articles/deployment-local.html
 
+---
 
+Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
 
 ---
 
@@ -24000,7 +24252,15 @@ install.packages("shiny")
 shiny::runGitHub("shiny-phyloseq","joey711")
 ```
 
+--- 
 
+## A few labs to choose from to get your hands dirty
+
+<img src="CYOA-logo.jpg"/>
+
+1. [Interactive graphics lab](labs/03/index.html)
+2. [Play with shiny lab](labs/02/index.html)
+3. [Harder shiny + interactive graphics lab](labs/01/index.html)
 
 
 --- .codefont

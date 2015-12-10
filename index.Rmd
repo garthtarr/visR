@@ -36,6 +36,7 @@ A working understanding of R will be assumed.
 - Latest version of [R](http://cran.r-project.org/) (v3.2.2 or later)
 - Latest version of [Rstudio](http://www.rstudio.com/products/rstudio/download/) 
 - Install the following packages (or ensure you have the latest versions):
+
 ```{r, eval=FALSE}
 install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
                "ggplot2", "magrittr", "DT", "ggvis", "dplyr",
@@ -46,15 +47,23 @@ install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
 ### Resources
 
 1. [Slides](lectures/01/index.html)
-2. [Interactive graphics lab](labs/03/index.html)
-3. [Play with shiny lab](labs/02/index.html)
-4. [Harder shiny + interactive graphics lab](labs/01/index.html)
-5. [Suggested more advanced lab solutions](labs/01/solutions.html)
+2. [Lecture Code](lectures/01/DemoCode.R)
+3. [Lab 1: Interactive graphics](labs/03/index.html)
+4. [Lab 2: Play with shiny](labs/02/index.html)
+5. [Lab 3: Build a shiny app (harder)](labs/01/index.html)
 6. [Markdown tips](labs/Markdown%20Tips/index.html)
 
 #### Recommended further reading
 
+**Journal articles**
+
+- McMurdie and Holmes (2014) Shiny-phyloseq: Web Application for Interactive Microbiome Analysis with Provenance Tracking. Bioinformatics (Oxford, England) 31(2), 282–283. doi: <a href="10.1093/bioinformatics/btu616">10.1093/bioinformatics/btu616</a>
+- McMurdie and Holmes (2013) phyloseq: An R package for reproducible interactive analysis and graphics of microbiome census data. PLoS ONE 8(4):e61217. doi: <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217">10.1371/journal.pone.0061217</a>
 - Tarr G, Müller S, and Welsh AH (2015). mplot: An R package for graphical model stability and variable selection. <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>
+
+**Blog posts**
+
+- 
 
 ### Feedback
 
