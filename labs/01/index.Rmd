@@ -41,7 +41,7 @@ install.packages(c("readr","tidyr","dplyr"))
 
 ### Get the data and tidy it
 
-```{r , eval=-3}
+```{r , eval=-3, message=FALSE}
 require(readr)
 original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", delim = "\t")
 View(original_data) # opens a spreadsheet view in RStudio
@@ -50,7 +50,7 @@ dim(original_data)
 
 Fix the name column by splitting on `||`, remove white space and drop unecessary variables.  We also want to ensure that we have [tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) -- each variable should be one column - the column headers are values not variable names.
 
-```{r, warning = FALSE, tidy=FALSE}
+```{r, warning = FALSE, tidy=FALSE, message=FALSE}
 require(dplyr)
 require(tidyr)
 cleaned_data = original_data %>%

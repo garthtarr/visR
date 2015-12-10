@@ -50,31 +50,7 @@ Fix the name column by splitting on `||`, remove white space and drop unecessary
 
 ```r
 require(dplyr)
-```
-
-```
-## Loading required package: dplyr
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 require(tidyr)
-```
-
-```
-## Loading required package: tidyr
-```
-
-```r
 cleaned_data = original_data %>%
   separate(NAME, 
            c("name", "BP", "MF", "systematic_name", "number"), 

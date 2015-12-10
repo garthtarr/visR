@@ -87,28 +87,8 @@ dim(original_data)
 <p>Fix the name column by splitting on <code>||</code>, remove white space and drop unecessary variables.  We also want to ensure that we have <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> -- each variable should be one column - the column headers are values not variable names.</p>
 
 <pre><code class="r">require(dplyr)
-</code></pre>
-
-<pre><code>## Loading required package: dplyr
-## 
-## Attaching package: &#39;dplyr&#39;
-## 
-## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-## 
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
-<pre><code class="r">require(tidyr)
-</code></pre>
-
-<pre><code>## Loading required package: tidyr
-</code></pre>
-
-<pre><code class="r">cleaned_data = original_data %&gt;%
+require(tidyr)
+cleaned_data = original_data %&gt;%
   separate(NAME, 
            c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, &quot;number&quot;), 
            sep = &quot;\\|\\|&quot;) %&gt;%
