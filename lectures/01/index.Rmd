@@ -180,7 +180,7 @@ install.packages("mplot")
 - `vis()` for **variable inclusion** and **model stability** plots
 - `af()` for the **adaptive fence**
 - `bglmnet()` for **bootstrapping glmnet**
-- `mplot()` for an interactive **shiny interface**
+- `mplot()` for an interactive **Shiny interface**
 
 Tarr G, Mueller S and Welsh AH (2015). “mplot: An R package for graphical model stability and variable selection.” <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>.
 
@@ -272,7 +272,7 @@ Some examples:
 - customisable (sort of)
 - active community
     - some packages are backed by RStudio
-    - Kent Russel ([@timelyportfolio](https://twitter.com/timelyportfolio)) has made one widget each week this year
+    - Kent Russel ([<i class="fa fa-twitter"></i> @timelyportfolio](https://twitter.com/timelyportfolio)) has made one widget [each week this year](http://www.buildingwidgets.com/)
 - if you're keen you can make your own... it's _relatively_ easy to adapt any of the multitude of [D3 examples](https://github.com/mbostock/d3/wiki/Gallery)
 
 --- .segue
@@ -285,7 +285,7 @@ Some examples:
 
 <img src="Z.jpg" />
 
-```{r, eval=FALSE, tidy = FALSE}
+```{r, eval=FALSE, tidy = FALSE, message=FALSE, warning=FALSE}
 install.packages("magrittr")
 require(magrittr)
 awesome_data =
@@ -327,7 +327,7 @@ x
 
 <br>
 
-[Read more](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+[<i class="fa fa-link"></i> Read more](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
 
 ---
 
@@ -349,7 +349,7 @@ Read more: [ggvis.rstudio.com](http://ggvis.rstudio.com/)
 
 --- .segue
 
-Honourable mentions
+# Honourable mentions
 
 --- 
 
@@ -388,79 +388,100 @@ To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008
 
 ---
 
-## How did I get started?
+## How did I get started Shiny?
 
-I wanted a way to interactively explore the results of a mega-simulation study from my thesis.
+<br>
 
-[garthtarr.com/apps/n50](http://garthtarr.com/apps/n50/)
+<q>
+I wanted a way to **interactively explore** the results of a mega-simulation study from my PhD thesis.
+</q>
 
 
 ---
 
-# Graphical Newtork Example
+## Graphical Newtork Example
 
-<div align="right"><a href="https://garthtarr.shinyapps.io/network/"><font color="white">Shinyapps.io </font><i class="fa fa-link fa-inverse"></i></a></div>
-<div align="right"><a href="https://github.com/garthtarr/network"><font color="white">Github </font><i class="fa fa-github fa-inverse"></i></a></div>
+Try loading it from GitHub:
+
+```{r, eval = FALSE}
+install.packages("huge")
+shiny::runGitHub('robnetwork', 'garthtarr')
+```
+
+<br>
+
+Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetwork/">Shinyapps.io<i class="fa fa-link"></i></a>
 
 --- 
 
 ## Why is Shiny awesome?
 
+<br>
+
 - No special HTML or JavaScript knowledge required
 - Share the power of R with non R users 
-- Empower your collaborators to answer their own questions
-
+- Empower your collaborators to **answer their own questions**
 
 ---
 
 
-## Sharing your shiny app
+## Sharing your Shiny app
 
-- Shinyapps.io
+### Shinyapps.io
 
 There's a button in Rstudio that lets you push it to their server. 
 
+### GitHub <i class="fa fa-github"></i>
 
-- Github
+Host your app on GitHub and then use code like this:
 
 ```
-shiny::runGitHub('network', 'garthtarr')
+shiny::runGitHub('robnetwork', 'garthtarr')
 ```
 
-- Host your own Rstudio server
+### Host your own RStudio/Shiny server (more complicated)
 
 <br>
 
-[More info](http://shiny.rstudio.com/articles/deployment-local.html)
+[<i class="fa fa-link"></i> More info](http://shiny.rstudio.com/articles/deployment-local.html)
 
 ---
 
-Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
+### Shiny adds basic interactivity to static plots
+
+<br>
+
+- Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
+
+<img src="exclude-points.gif"/>
+
+<br>
+
+[<i class="fa fa-link"></i> More info](http://shiny.rstudio.com/articles/plot-interaction.html)
+
+---
+
+## Teach yourself Shiny
+
+- 2.5 hour video
+- 7 lessons
+- [shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
 
 
 --- 
 
-## A few labs to choose from to get your hands dirty
+## Time to get your hands dirty
 
 <img src="CYOA-logo.jpg"/>
 
-1. [Play with a shiny app](labs/02/index.html)
-2. [Build a shiny app](labs/01/index.html)
+1. [Play with a Shiny app](labs/02/index.html)
+2. [Build a Shiny app](labs/01/index.html)
 
-
---- .codefont
-
-## References
-
-```{r results="asis", echo=FALSE, cache=FALSE}
-RefManageR::BibOptions(bib.style="authoryear")
-bibliography()
-```
 
 --- .codefont
 
 ## Session Info
 
 ```{r,tidy=TRUE}
-#sessionInfo()
+sessionInfo()
 ```

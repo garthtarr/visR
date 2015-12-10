@@ -157,7 +157,7 @@ install.packages("mplot")
 - `vis()` for **variable inclusion** and **model stability** plots
 - `af()` for the **adaptive fence**
 - `bglmnet()` for **bootstrapping glmnet**
-- `mplot()` for an interactive **shiny interface**
+- `mplot()` for an interactive **Shiny interface**
 
 Tarr G, Mueller S and Welsh AH (2015). “mplot: An R package for graphical model stability and variable selection.” <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>.
 
@@ -173,14 +173,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 15:27:37 2015 -->
+<!-- Thu Dec 10 17:24:04 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID107ce42add479 () {
+function gvisDataLineChartID1f834d298c0 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22220,8 +22220,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID107ce42add479() {
-var data = gvisDataLineChartID107ce42add479();
+function drawChartLineChartID1f834d298c0() {
+var data = gvisDataLineChartID1f834d298c0();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22242,7 +22242,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID107ce42add479')
+    document.getElementById('LineChartID1f834d298c0')
     );
     chart.draw(data,options);
     
@@ -22266,9 +22266,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID107ce42add479);
+callbacks.push(drawChartLineChartID1f834d298c0);
 })();
-function displayChartLineChartID107ce42add479() {
+function displayChartLineChartID1f834d298c0() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22292,11 +22292,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID107ce42add479"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID1f834d298c0"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID107ce42add479" 
+<div id="LineChartID1f834d298c0" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22309,14 +22309,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 15:27:40 2015 -->
+<!-- Thu Dec 10 17:24:07 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID107ce44fb747c () {
+function gvisDataBubbleChartID1f81e4e39bb () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22870,8 +22870,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID107ce44fb747c() {
-var data = gvisDataBubbleChartID107ce44fb747c();
+function drawChartBubbleChartID1f81e4e39bb() {
+var data = gvisDataBubbleChartID1f81e4e39bb();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22896,7 +22896,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID107ce44fb747c')
+    document.getElementById('BubbleChartID1f81e4e39bb')
     );
     chart.draw(data,options);
     
@@ -22920,9 +22920,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID107ce44fb747c);
+callbacks.push(drawChartBubbleChartID1f81e4e39bb);
 })();
-function displayChartBubbleChartID107ce44fb747c() {
+function displayChartBubbleChartID1f81e4e39bb() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22946,11 +22946,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID107ce44fb747c"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID1f81e4e39bb"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID107ce44fb747c" 
+<div id="BubbleChartID1f81e4e39bb" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22964,14 +22964,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 15:27:40 2015 -->
+<!-- Thu Dec 10 17:24:07 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID107ce642ca120 () {
+function gvisDataScatterChartID1f83aabbb92 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23852,8 +23852,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID107ce642ca120() {
-var data = gvisDataScatterChartID107ce642ca120();
+function drawChartScatterChartID1f83aabbb92() {
+var data = gvisDataScatterChartID1f83aabbb92();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23868,7 +23868,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID107ce642ca120')
+    document.getElementById('ScatterChartID1f83aabbb92')
     );
     chart.draw(data,options);
     
@@ -23892,9 +23892,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID107ce642ca120);
+callbacks.push(drawChartScatterChartID1f83aabbb92);
 })();
-function displayChartScatterChartID107ce642ca120() {
+function displayChartScatterChartID1f83aabbb92() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23918,11 +23918,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID107ce642ca120"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID1f83aabbb92"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID107ce642ca120" 
+<div id="ScatterChartID1f83aabbb92" 
   style="width: 850; height: 500;">
 </div>
 
@@ -23975,7 +23975,7 @@ Some examples:
 - customisable (sort of)
 - active community
     - some packages are backed by RStudio
-    - Kent Russel ([@timelyportfolio](https://twitter.com/timelyportfolio)) has made one widget each week this year
+    - Kent Russel ([<i class="fa fa-twitter"></i> @timelyportfolio](https://twitter.com/timelyportfolio)) has made one widget [each week this year](http://www.buildingwidgets.com/)
 - if you're keen you can make your own... it's _relatively_ easy to adapt any of the multitude of [D3 examples](https://github.com/mbostock/d3/wiki/Gallery)
 
 --- .segue
@@ -24088,7 +24088,7 @@ x
 
 <br>
 
-[Read more](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+[<i class="fa fa-link"></i> Read more](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
 
 ---
 
@@ -24110,7 +24110,7 @@ Read more: [ggvis.rstudio.com](http://ggvis.rstudio.com/)
 
 --- .segue
 
-Honourable mentions
+# Honourable mentions
 
 --- 
 
@@ -24151,109 +24151,95 @@ To get started look at <a href="https://cran.r-project.org/doc/Rnews/Rnews_2008
 
 ---
 
-## How did I get started?
+## How did I get started Shiny?
 
-I wanted a way to interactively explore the results of a mega-simulation study from my thesis.
+<br>
 
-[garthtarr.com/apps/n50](http://garthtarr.com/apps/n50/)
+<q>
+I wanted a way to **interactively explore** the results of a mega-simulation study from my PhD thesis.
+</q>
 
 
 ---
 
-# Graphical Newtork Example
+## Graphical Newtork Example
 
-<div align="right"><a href="https://garthtarr.shinyapps.io/network/"><font color="white">Shinyapps.io </font><i class="fa fa-link fa-inverse"></i></a></div>
-<div align="right"><a href="https://github.com/garthtarr/network"><font color="white">Github </font><i class="fa fa-github fa-inverse"></i></a></div>
+Try loading it from GitHub:
+
+
+```r
+install.packages("huge")
+shiny::runGitHub("robnetwork", "garthtarr")
+```
+
+<br>
+
+Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetwork/">Shinyapps.io<i class="fa fa-link"></i></a>
 
 --- 
 
 ## Why is Shiny awesome?
 
+<br>
+
 - No special HTML or JavaScript knowledge required
 - Share the power of R with non R users 
-- Empower your collaborators to answer their own questions
-
+- Empower your collaborators to **answer their own questions**
 
 ---
 
 
-## Sharing your shiny app
+## Sharing your Shiny app
 
-- Shinyapps.io
+### Shinyapps.io
 
 There's a button in Rstudio that lets you push it to their server. 
 
+### GitHub <i class="fa fa-github"></i>
 
-- Github
+Host your app on GitHub and then use code like this:
 
 ```
-shiny::runGitHub('network', 'garthtarr')
+shiny::runGitHub('robnetwork', 'garthtarr')
 ```
 
-- Host your own Rstudio server
+### Host your own RStudio/Shiny server (more complicated)
 
 <br>
 
-More info: http://shiny.rstudio.com/articles/deployment-local.html
+[<i class="fa fa-link"></i> More info](http://shiny.rstudio.com/articles/deployment-local.html)
 
 ---
 
-Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
+### Shiny adds basic interactivity to static plots
+
+<br>
+
+- Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
+
+<img src="exclude-points.gif"/>
+
+<br>
+
+[<i class="fa fa-link"></i> More info](http://shiny.rstudio.com/articles/plot-interaction.html)
 
 ---
 
-## Underlying technology
-  <div class="columns-2">
-### R packages
-- leaps 
-- bestglm 
-- googleVis
-- shiny
-- parallel 
-- mvoutlier
+## Teach yourself Shiny
 
-### Web
-- [d3.js](http://d3js.org/)
-- [Google Charts](https://developers.google.com/chart/)
+- 2.5 hour video
+- 7 lessons
+- [shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
 
-### Package development
-- RStudio makes setting up package structure easy
-- Version control with Github
-- Documentation with `roxygen2`
-- Vignettes (and these slides) with markdown
-- `devtools` is an essential package for building and loading R packages
-- [R packages by Hadley Wickham](http://r-pkgs.had.co.nz/)
-</div>
-
-## Additional resources
-
-- htmlwidgets package
-    - Integrate javascript with R
-    - http://www.htmlwidgets.org/
-    - http://cran.rstudio.com/web/packages/htmlwidgets/index.html
-
-- Shiny-phyloseq (Susan Holmes)
-    - http://joey711.github.io/shiny-phyloseq
-```
-install.packages("shiny")
-shiny::runGitHub("shiny-phyloseq","joey711")
-```
 
 --- 
 
-## A few labs to choose from to get your hands dirty
+## Time to get your hands dirty
 
 <img src="CYOA-logo.jpg"/>
 
-1. [Interactive graphics lab](labs/03/index.html)
-2. [Play with shiny lab](labs/02/index.html)
-3. [Harder shiny + interactive graphics lab](labs/01/index.html)
-
-
---- .codefont
-
-## References
-
+1. [Play with a Shiny app](labs/02/index.html)
+2. [Build a Shiny app](labs/01/index.html)
 
 
 --- .codefont
@@ -24262,5 +24248,44 @@ shiny::runGitHub("shiny-phyloseq","joey711")
 
 
 ```r
-# sessionInfo()
+sessionInfo()
+```
+
+```
+## R version 3.2.2 (2015-08-14)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: OS X 10.10.5 (Yosemite)
+## 
+## locale:
+## [1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] magrittr_1.5        ggplot2_1.0.1       tidyr_0.3.1        
+##  [4] dplyr_0.4.3         readr_0.2.2         knitcitations_1.0.7
+##  [7] knitr_1.11          WDI_2.4             RJSONIO_1.3-0      
+## [10] googleVis_0.5.10   
+## 
+## loaded via a namespace (and not attached):
+##  [1] poirot_0.0.2         reshape2_1.4.1       lattice_0.20-33     
+##  [4] colorspace_1.2-6     htmltools_0.2.6      yaml_2.1.13         
+##  [7] base64enc_0.1-3      XML_3.98-1.3         DBI_0.3.1           
+## [10] RColorBrewer_1.1-2   foreach_1.4.3        plyr_1.8.3          
+## [13] stringr_1.0.0        munsell_0.4.2        gtable_0.1.2        
+## [16] htmlwidgets_0.5      codetools_0.2-14     evaluate_0.8        
+## [19] labeling_0.3         httpuv_1.3.3         parallel_3.2.2      
+## [22] curl_0.9.4           markdown_0.7.7       proto_0.3-10        
+## [25] pairsD3_0.1.0        Rcpp_0.12.2          xtable_1.8-0        
+## [28] scales_0.3.0         formatR_1.2.1        slidify_0.5         
+## [31] jsonlite_0.9.19      mime_0.4             rCharts_0.4.5       
+## [34] ggvis_0.4.2.9000     png_0.1-7            digest_0.6.8        
+## [37] stringi_1.0-1        shiny_0.12.2         mplot_0.7.7         
+## [40] grid_3.2.2           bibtex_0.4.0         tools_3.2.2         
+## [43] bitops_1.0-6         lazyeval_0.1.10      RCurl_1.95-4.7      
+## [46] RefManageR_0.8.63    whisker_0.3-2        MASS_7.3-45         
+## [49] shinydashboard_0.5.1 lubridate_1.5.0      iterators_1.0.8     
+## [52] assertthat_0.1       httr_1.0.0           d3heatmap_0.6.1     
+## [55] R6_2.1.1
 ```

@@ -64,6 +64,7 @@ install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
 
 - Affali, D (2015) [Building Shiny apps - an interactive tutorial](http://deanattali.com/blog/building-shiny-apps-tutorial/). Accessed 10 December 2015.
 - Parkkinen J (2014) [Interactive visualizations with R - a minireview](http://ouzor.github.io/blog/2014/11/21/interactive-visualizations.html). Accessed 10 December 2015.
+- Teach yourself Shiny, [shiny.rstudio.com/tutorial](http://shiny.rstudio.com/tutorial/)
 
 ### Feedback
 
