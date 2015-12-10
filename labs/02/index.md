@@ -12,7 +12,7 @@ github      : {user: garthtarr, repo: visR, branch: gh-pages, name: Garth Tarr}
 
 
 
-## Characterizing mutation-expression networks in multiple cancers
+## Case study: Characterizing mutation-expression networks in multiple cancers
 
 - <a href="https://twitter.com/shazanfar">Shila Ghazanfar's</a>  [BIS2015 poster](http://f1000research.com/posters/4-1046) has an accompanying Shiny app.
 - 4,443 tumours analysed over 19 cancers from TCGA

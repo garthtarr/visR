@@ -32,6 +32,8 @@ install.packages(c("readr", "tidyr", "dplyr"))
 
 ### Get the data and tidy it
 
+The data, tidying code and examples are borrowed from [here](http://varianceexplained.org/r/tidy-genomics/) and [here](http://varianceexplained.org/r/tidy-genomics-broom/).
+
 
 ```r
 require(readr)
@@ -51,6 +53,11 @@ Fix the name column by splitting on `||`, remove white space and drop unecessary
 ```r
 require(dplyr)
 require(tidyr)
+
+nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
+               S = "Sulfate", N = "Ammonia", U = "Uracil")
+
+
 cleaned_data = original_data %>%
   separate(NAME, 
            c("name", "BP", "MF", "systematic_name", "number"), 
@@ -58,7 +65,9 @@ cleaned_data = original_data %>%
   mutate_each(funs(trimws), name:systematic_name) %>%
   select(-number, -GID, -YORF, -GWEIGHT)  %>%
   gather(sample, expression, G0.05:U0.3) %>%
-  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
+  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>%
+  mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%
+  filter(!is.na(expression), systematic_name != "")
 names(cleaned_data)
 ```
 
@@ -71,7 +80,9 @@ The above code chunk is doing a lot of processing very sucinctly using the pipe 
 
 ### Visualise the data
 
-Below is a classical approach using `ggplot2` to visualise ... explanation of what I've done below.
+Below is a classical approach using `ggplot2`.
+
+Look at one gene **LEU1**:
 
 
 ```r
@@ -84,6 +95,11 @@ cleaned_data %>%
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
 
+**LEU1**'s expression is far higher (more “turned on”) when the cell is being starved of leucine than in any other condition, because in that case the cell has to synthesize its own leucine. And as the amount of leucine in the environment (the growth rate) increases, the cell can focus less on leucine production, and the expression of those genes go down. We’ve just gotten one snapshot of our gene’s regulatory network, and how it responds to external stimuli.
+
+To look at all the genes in the **leucine biosynthesis** process subset using the `BP` variable, to filter for all genes in that process, and then facet to create sub-plots for each.
+
+
 ```r
 cleaned_data %>%
   filter(BP == "leucine biosynthesis") %>%
@@ -92,7 +108,12 @@ cleaned_data %>%
   facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-2.png) 
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
+
+**LEU1**, **LEU2**, and **LEU4** all show a similar pattern, where starvation of leucine causes higher gene expression. **LEU4** also appears to respond to glucose starvation as well. 
+
+We can do some basic model fitting, adding lines of best fit using  `geom_smooth(method = "lm", se = FALSE)`:
+
 
 ```r
 cleaned_data %>%
@@ -103,18 +124,9 @@ cleaned_data %>%
   facet_wrap(~name)
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-3.png) 
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
 
-```r
-cleaned_data %>%
-  filter(BP == "sulfur metabolism") %>%
-  ggplot(aes(rate, expression, color = nutrient)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  facet_wrap(~name + systematic_name, scales = "free_y")
-```
-
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-4.png) 
+This is great, but there are so many different genes and processes - how can we look at them all?  How do you deal with collaborators who are constantly harassing you asking for plots of different genes?  Shiny is the answer!
 
 ## Instructions
 
@@ -131,16 +143,19 @@ require(tidyr)
 require(ggplot2)
 original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", 
     delim = "\t")
+nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate", S = "Sulfate", 
+    N = "Ammonia", U = "Uracil")
 cleaned_data = original_data %>% separate(NAME, c("name", "BP", "MF", "systematic_name", 
     "number"), sep = "\\|\\|") %>% mutate_each(funs(trimws), name:systematic_name) %>% 
     select(-number, -GID, -YORF, -GWEIGHT) %>% gather(sample, expression, G0.05:U0.3) %>% 
-    separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
+    separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>% mutate(nutrient = plyr::revalue(nutrient, 
+    nutrient_names)) %>% filter(!is.na(expression), systematic_name != "")
 ```
 - Whatever's in `global.R` will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as `ui.R`, `server.R` and `global.R` then simplify the `read_delim()` function to refer to just `Brauer2008_DataSet1.tds` (without loading it over the internet every time).
 - Run the app to make sure it's working in this basic form.
 - Replace the default plot with the first plot we generated above showing results for the **LEU1** gene. Make sure this is working by running the app before proceeding any further.
 
-You want this in the `server.R` file
+- You want this in the `server.R` file
 
 
 ```r
@@ -151,7 +166,7 @@ output$plot1 = renderPlot({
 })
 ```
 
-And this in the mainPanel part of the `ui.R` function:
+- And this in the mainPanel part of the `ui.R` function:
 
 
 ```r
@@ -206,6 +221,11 @@ output$plot1 = renderPlot({
 
 - OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).
 - What if we wanted to be able to select all the genes related to a particular biological process.  We'll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using `tabsetPanel` in the `ui.R` file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.
+- Once you're happy with your app, head over to [shinyapps.io](http://www.shinyapps.io/), create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!  To do this, you'll first need to install these packages:
+
+```r
+install.packages(c("PKI", "packrat", "rsconnect"))
+```
 
 ### Suggested solution
 

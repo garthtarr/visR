@@ -74,6 +74,8 @@
 
 <h3>Get the data and tidy it</h3>
 
+<p>The data, tidying code and examples are borrowed from <a href="http://varianceexplained.org/r/tidy-genomics/">here</a> and <a href="http://varianceexplained.org/r/tidy-genomics-broom/">here</a>.</p>
+
 <pre><code class="r">require(readr)
 original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, 
     delim = &quot;\t&quot;)
@@ -88,6 +90,11 @@ dim(original_data)
 
 <pre><code class="r">require(dplyr)
 require(tidyr)
+
+nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;,
+               S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
+
+
 cleaned_data = original_data %&gt;%
   separate(NAME, 
            c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, &quot;number&quot;), 
@@ -95,7 +102,9 @@ cleaned_data = original_data %&gt;%
   mutate_each(funs(trimws), name:systematic_name) %&gt;%
   select(-number, -GID, -YORF, -GWEIGHT)  %&gt;%
   gather(sample, expression, G0.05:U0.3) %&gt;%
-  separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
+  separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE) %&gt;%
+  mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %&gt;%
+  filter(!is.na(expression), systematic_name != &quot;&quot;)
 names(cleaned_data)
 </code></pre>
 
@@ -107,7 +116,9 @@ names(cleaned_data)
 
 <h3>Visualise the data</h3>
 
-<p>Below is a classical approach using <code>ggplot2</code> to visualise ... explanation of what I&#39;ve done below.</p>
+<p>Below is a classical approach using <code>ggplot2</code>.</p>
+
+<p>Look at one gene <strong>LEU1</strong>:</p>
 
 <pre><code class="r">library(ggplot2)
 cleaned_data %&gt;%
@@ -118,6 +129,10 @@ cleaned_data %&gt;%
 
 <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
+<p><strong>LEU1</strong>&#39;s expression is far higher (more “turned on”) when the cell is being starved of leucine than in any other condition, because in that case the cell has to synthesize its own leucine. And as the amount of leucine in the environment (the growth rate) increases, the cell can focus less on leucine production, and the expression of those genes go down. We’ve just gotten one snapshot of our gene’s regulatory network, and how it responds to external stimuli.</p>
+
+<p>To look at all the genes in the <strong>leucine biosynthesis</strong> process subset using the <code>BP</code> variable, to filter for all genes in that process, and then facet to create sub-plots for each.</p>
+
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
   ggplot(aes(rate, expression, color = nutrient)) +
@@ -125,7 +140,11 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-2.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+<p><strong>LEU1</strong>, <strong>LEU2</strong>, and <strong>LEU4</strong> all show a similar pattern, where starvation of leucine causes higher gene expression. <strong>LEU4</strong> also appears to respond to glucose starvation as well. </p>
+
+<p>We can do some basic model fitting, adding lines of best fit using  <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code>:</p>
 
 <pre><code class="r">cleaned_data %&gt;%
   filter(BP == &quot;leucine biosynthesis&quot;) %&gt;%
@@ -135,17 +154,9 @@ cleaned_data %&gt;%
   facet_wrap(~name)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-3.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
-<pre><code class="r">cleaned_data %&gt;%
-  filter(BP == &quot;sulfur metabolism&quot;) %&gt;%
-  ggplot(aes(rate, expression, color = nutrient)) +
-  geom_point() +
-  geom_smooth(method = &quot;lm&quot;, se = FALSE) +
-  facet_wrap(~name + systematic_name, scales = &quot;free_y&quot;)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-4-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p>This is great, but there are so many different genes and processes - how can we look at them all?  How do you deal with collaborators who are constantly harassing you asking for plots of different genes?  Shiny is the answer!</p>
 
 <h2>Instructions</h2>
 
@@ -162,19 +173,21 @@ require(tidyr)
 require(ggplot2)
 original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, 
     delim = &quot;\t&quot;)
+nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;, S = &quot;Sulfate&quot;, 
+    N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
 cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, 
     &quot;number&quot;), sep = &quot;\\|\\|&quot;) %&gt;% mutate_each(funs(trimws), name:systematic_name) %&gt;% 
     select(-number, -GID, -YORF, -GWEIGHT) %&gt;% gather(sample, expression, G0.05:U0.3) %&gt;% 
-    separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE)
+    separate(sample, c(&quot;nutrient&quot;, &quot;rate&quot;), sep = 1, convert = TRUE) %&gt;% mutate(nutrient = plyr::revalue(nutrient, 
+    nutrient_names)) %&gt;% filter(!is.na(expression), systematic_name != &quot;&quot;)
 </code></pre>
 
 <ul>
 <li>Whatever&#39;s in <code>global.R</code> will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as <code>ui.R</code>, <code>server.R</code> and <code>global.R</code> then simplify the <code>read_delim()</code> function to refer to just <code>Brauer2008_DataSet1.tds</code> (without loading it over the internet every time).</li>
 <li>Run the app to make sure it&#39;s working in this basic form.</li>
-<li>Replace the default plot with the first plot we generated above showing results for the <strong>LEU1</strong> gene. Make sure this is working by running the app before proceeding any further.</li>
+<li><p>Replace the default plot with the first plot we generated above showing results for the <strong>LEU1</strong> gene. Make sure this is working by running the app before proceeding any further.</p></li>
+<li><p>You want this in the <code>server.R</code> file</p></li>
 </ul>
-
-<p>You want this in the <code>server.R</code> file</p>
 
 <pre><code class="r">output$plot1 = renderPlot({
     cleaned_data %&gt;% filter(name == &quot;LEU1&quot;) %&gt;% ggplot(aes(rate, expression, 
@@ -183,7 +196,9 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 })
 </code></pre>
 
-<p>And this in the mainPanel part of the <code>ui.R</code> function:</p>
+<ul>
+<li>And this in the mainPanel part of the <code>ui.R</code> function:</li>
+</ul>
 
 <pre><code class="r">plotOutput(&quot;plot1&quot;)
 </code></pre>
@@ -237,7 +252,11 @@ cleaned_data = original_data %&gt;% separate(NAME, c(&quot;name&quot;, &quot;BP&
 <ul>
 <li>OK so at this point, you should be able to plot multiple genes and toggle between the ploting just the raw data and fitting simple linear regression lines (with the raw observations in the background).</li>
 <li>What if we wanted to be able to select all the genes related to a particular biological process.  We&#39;ll need a new dropdown menu and a new plot. Do this by adapting the above code.  Optionally you can include it in a new tab using <code>tabsetPanel</code> in the <code>ui.R</code> file - you can see how this is done in the solutions, but this is probably more advanced than we really need for now.</li>
+<li>Once you&#39;re happy with your app, head over to <a href="http://www.shinyapps.io/">shinyapps.io</a>, create an account and follow the instructions to push your app to the web so you can share the link and show off your fine work to all your collaborators!  To do this, you&#39;ll first need to install these packages:</li>
 </ul>
+
+<pre><code class="r">install.packages(c(&quot;PKI&quot;, &quot;packrat&quot;, &quot;rsconnect&quot;))
+</code></pre>
 
 <h3>Suggested solution</h3>
 
