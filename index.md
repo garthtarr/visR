@@ -8,11 +8,7 @@ github      : {user: garthtarr, repo: visR, branch: gh-pages, name: Garth Tarr}
 widgets     : [mathjax]
 ---
 
-```{r setup, cache = F, echo = F}
-knitr::knit_hooks$set(document = function(doc){
-  gsub('`` ', '```', doc)
-})
-```
+
 
 
 ### Introduction
@@ -37,7 +33,8 @@ A working understanding of R will be assumed.
 - Latest version of [Rstudio](http://www.rstudio.com/products/rstudio/download/) 
 - Install the following packages (or ensure you have the latest versions):
 
-```{r, eval=FALSE}
+
+```r
 install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
                "ggplot2", "magrittr", "DT", "ggvis", "dplyr",
                "MASS", "rhandsontable", "pairsD3", "tidyr", "ICSNP",

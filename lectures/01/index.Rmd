@@ -431,50 +431,12 @@ shiny::runGitHub('network', 'garthtarr')
 
 <br>
 
-More info: http://shiny.rstudio.com/articles/deployment-local.html
+[More info](http://shiny.rstudio.com/articles/deployment-local.html)
 
 ---
 
 Interactivity with base and ggplot2 graphics (e.g. clicking and brushing)
 
----
-
-## Underlying technology
-  <div class="columns-2">
-### R packages
-- leaps 
-- bestglm 
-- googleVis
-- shiny
-- parallel 
-- mvoutlier
-
-### Web
-- [d3.js](http://d3js.org/)
-- [Google Charts](https://developers.google.com/chart/)
-
-### Package development
-- RStudio makes setting up package structure easy
-- Version control with Github
-- Documentation with `roxygen2`
-- Vignettes (and these slides) with markdown
-- `devtools` is an essential package for building and loading R packages
-- [R packages by Hadley Wickham](http://r-pkgs.had.co.nz/)
-</div>
-
-## Additional resources
-
-- htmlwidgets package
-    - Integrate javascript with R
-    - http://www.htmlwidgets.org/
-    - http://cran.rstudio.com/web/packages/htmlwidgets/index.html
-
-- Shiny-phyloseq (Susan Holmes)
-    - http://joey711.github.io/shiny-phyloseq
-```
-install.packages("shiny")
-shiny::runGitHub("shiny-phyloseq","joey711")
-```
 
 --- 
 
@@ -482,9 +444,8 @@ shiny::runGitHub("shiny-phyloseq","joey711")
 
 <img src="CYOA-logo.jpg"/>
 
-1. [Interactive graphics lab](labs/03/index.html)
-2. [Play with shiny lab](labs/02/index.html)
-3. [Harder shiny + interactive graphics lab](labs/01/index.html)
+1. [Play with a shiny app](labs/02/index.html)
+2. [Build a shiny app](labs/01/index.html)
 
 
 --- .codefont
