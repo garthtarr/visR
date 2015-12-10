@@ -235,4 +235,4 @@ See [here](https://github.com/garthtarr/visR/tree/gh-pages/labs/01/myapp) for su
 ## References
 
 - Robinson D (2015). "Cleaning and visualizing genomic data: a case study in tidy analysis", blog post. http://varianceexplained.org/r/tidy-genomics/
-- Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast,
+- Brauer et al. (2008). Coordination of Growth Rate, Cell Cycle, Stress Response, and Metabolic Activity in Yeast. _Molecular Biology of the Cell_ 19(1) 352-367. doi: [10.1091/mbc.E07-08-0779](http://www.molbiolcell.org/content/19/1/352.abstract)
