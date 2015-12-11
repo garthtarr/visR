@@ -55,7 +55,7 @@ require(dplyr)
 require(tidyr)
 
 nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
-               S = "Sulfate", N = "Ammonia", U = "Uracil")
+                    S = "Sulfate", N = "Ammonia", U = "Uracil")
 
 
 cleaned_data = original_data %>%
@@ -150,7 +150,7 @@ require(tidyr)
 require(ggplot2)
 original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", delim = "\t")
 nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
-               S = "Sulfate", N = "Ammonia", U = "Uracil")
+                    S = "Sulfate", N = "Ammonia", U = "Uracil")
 cleaned_data = original_data %>%
   separate(NAME, 
            c("name", "BP", "MF", "systematic_name", "number"), 
@@ -202,7 +202,8 @@ selectizeInput(inputId = "gene",
 
 ```r
 output$plot1 = renderPlot({
-  filter(name == input$gene) %>%
+  cleaned_data %>%
+    filter(name == input$gene) %>%
     ggplot(aes(rate, expression, color = nutrient)) +
     geom_line() + theme_bw(base_size = 14) + 
     facet_wrap(~name + systematic_name)

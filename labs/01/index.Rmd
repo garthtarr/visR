@@ -57,7 +57,7 @@ require(dplyr)
 require(tidyr)
 
 nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
-               S = "Sulfate", N = "Ammonia", U = "Uracil")
+                    S = "Sulfate", N = "Ammonia", U = "Uracil")
 
 
 cleaned_data = original_data %>%
@@ -136,7 +136,7 @@ require(tidyr)
 require(ggplot2)
 original_data = read_delim("http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds", delim = "\t")
 nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
-               S = "Sulfate", N = "Ammonia", U = "Uracil")
+                    S = "Sulfate", N = "Ammonia", U = "Uracil")
 cleaned_data = original_data %>%
   separate(NAME, 
            c("name", "BP", "MF", "systematic_name", "number"), 
@@ -184,11 +184,13 @@ selectizeInput(inputId = "gene",
 
 ```{r, eval = FALSE, tidy=FALSE}
 output$plot1 = renderPlot({
-  filter(name == input$gene) %>%
+  cleaned_data %>%
+    filter(name == input$gene) %>%
     ggplot(aes(rate, expression, color = nutrient)) +
     geom_line() + theme_bw(base_size = 14) + 
     facet_wrap(~name + systematic_name)
 })
+
 ```
 
 - What if we wanted to plot multiple genes?  Try changing `multiple=TRUE` in the selectize input and seeing what happens.  It won't work when multiple genes are selected.  We need to update out filtering in plot function in the `server.R` file to account for multiple gene options.  Something like `filter(is.element(name, input$gene))` should do the trick.

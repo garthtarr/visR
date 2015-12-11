@@ -92,7 +92,7 @@ dim(original_data)
 require(tidyr)
 
 nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;,
-               S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
+                    S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
 
 
 cleaned_data = original_data %&gt;%
@@ -180,7 +180,7 @@ require(tidyr)
 require(ggplot2)
 original_data = read_delim(&quot;http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds&quot;, delim = &quot;\t&quot;)
 nutrient_names &lt;- c(G = &quot;Glucose&quot;, L = &quot;Leucine&quot;, P = &quot;Phosphate&quot;,
-               S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
+                    S = &quot;Sulfate&quot;, N = &quot;Ammonia&quot;, U = &quot;Uracil&quot;)
 cleaned_data = original_data %&gt;%
   separate(NAME, 
            c(&quot;name&quot;, &quot;BP&quot;, &quot;MF&quot;, &quot;systematic_name&quot;, &quot;number&quot;), 
@@ -233,7 +233,8 @@ cleaned_data = original_data %&gt;%
 </ul>
 
 <pre><code class="r">output$plot1 = renderPlot({
-  filter(name == input$gene) %&gt;%
+  cleaned_data %&gt;%
+    filter(name == input$gene) %&gt;%
     ggplot(aes(rate, expression, color = nutrient)) +
     geom_line() + theme_bw(base_size = 14) + 
     facet_wrap(~name + systematic_name)
