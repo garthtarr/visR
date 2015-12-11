@@ -57,7 +57,7 @@ install.packages(c("shiny", "shinydashboard", "shinythemes", "shinyBS",
 - McMurdie and Holmes (2013) phyloseq: An R package for reproducible interactive analysis and graphics of microbiome census data. PLoS ONE 8(4):e61217. doi: <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217">10.1371/journal.pone.0061217</a>
 - Tarr G, Müller S, and Welsh AH (2015). mplot: An R package for graphical model stability and variable selection. <a href="http://arxiv.org/abs/1509.07583">arXiv:1509.07583 [stat.ME]</a>
 
-****Online tutorials**
+**Online tutorials**
 
 - Affali, D (2015). [Building Shiny apps - an interactive tutorial](http://deanattali.com/blog/building-shiny-apps-tutorial/). Accessed 10 December 2015.
 - Parkkinen J (2014). [Interactive visualizations with R - a minireview](http://ouzor.github.io/blog/2014/11/21/interactive-visualizations.html). Accessed 10 December 2015.
