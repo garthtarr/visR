@@ -170,14 +170,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 23:04:23 2015 -->
+<!-- Fri Dec 11 11:34:26 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID5668bb099a () {
+function gvisDataLineChartID56618c20e07 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22217,8 +22217,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID5668bb099a() {
-var data = gvisDataLineChartID5668bb099a();
+function drawChartLineChartID56618c20e07() {
+var data = gvisDataLineChartID56618c20e07();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22239,7 +22239,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID5668bb099a')
+    document.getElementById('LineChartID56618c20e07')
     );
     chart.draw(data,options);
     
@@ -22263,9 +22263,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID5668bb099a);
+callbacks.push(drawChartLineChartID56618c20e07);
 })();
-function displayChartLineChartID5668bb099a() {
+function displayChartLineChartID56618c20e07() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22289,11 +22289,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5668bb099a"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID56618c20e07"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID5668bb099a" 
+<div id="LineChartID56618c20e07" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22306,14 +22306,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 23:04:26 2015 -->
+<!-- Fri Dec 11 11:34:37 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID56634ad69ef () {
+function gvisDataBubbleChartID56617a0a953 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22867,8 +22867,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID56634ad69ef() {
-var data = gvisDataBubbleChartID56634ad69ef();
+function drawChartBubbleChartID56617a0a953() {
+var data = gvisDataBubbleChartID56617a0a953();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22893,7 +22893,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID56634ad69ef')
+    document.getElementById('BubbleChartID56617a0a953')
     );
     chart.draw(data,options);
     
@@ -22917,9 +22917,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID56634ad69ef);
+callbacks.push(drawChartBubbleChartID56617a0a953);
 })();
-function displayChartBubbleChartID56634ad69ef() {
+function displayChartBubbleChartID56617a0a953() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22943,11 +22943,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56634ad69ef"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56617a0a953"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID56634ad69ef" 
+<div id="BubbleChartID56617a0a953" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22961,14 +22961,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Thu Dec 10 23:04:26 2015 -->
+<!-- Fri Dec 11 11:34:37 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID5662bd2061a () {
+function gvisDataScatterChartID5663522b1f3 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23849,8 +23849,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID5662bd2061a() {
-var data = gvisDataScatterChartID5662bd2061a();
+function drawChartScatterChartID5663522b1f3() {
+var data = gvisDataScatterChartID5663522b1f3();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23865,7 +23865,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID5662bd2061a')
+    document.getElementById('ScatterChartID5663522b1f3')
     );
     chart.draw(data,options);
     
@@ -23889,9 +23889,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID5662bd2061a);
+callbacks.push(drawChartScatterChartID5663522b1f3);
 })();
-function displayChartScatterChartID5662bd2061a() {
+function displayChartScatterChartID5663522b1f3() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23915,11 +23915,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5662bd2061a"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5663522b1f3"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID5662bd2061a" 
+<div id="ScatterChartID5663522b1f3" 
   style="width: 850; height: 500;">
 </div>
 
@@ -24175,7 +24175,7 @@ I wanted a way to **interactively explore** the results of a mega-simulation stu
 
 ## Graphical newtork example
 
-Try loading it from GitHub:
+Try loading it from GitHub <i class="fa fa-github"></i>:
 
 
 ```r

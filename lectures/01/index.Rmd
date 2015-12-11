@@ -411,7 +411,7 @@ I wanted a way to **interactively explore** the results of a mega-simulation stu
 
 ## Graphical newtork example
 
-Try loading it from GitHub:
+Try loading it from GitHub <i class="fa fa-github"></i>:
 
 ```{r, eval = FALSE}
 install.packages("huge")
