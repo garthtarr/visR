@@ -161,6 +161,13 @@ cleaned_data %&gt;%
 <h2>Instructions</h2>
 
 <ul>
+<li>Make sure you have the following packages installed:</li>
+</ul>
+
+<pre><code class="r">install.packages(c(&quot;readr&quot;, &quot;dplyr&quot;, &quot;tidyr&quot;, &quot;ggplot2&quot;))
+</code></pre>
+
+<ul>
 <li>Create a new shiny app in RStudio by going File &gt; New Project &gt; New Directory &gt; Shiny Web Application &gt; Give your project a name and hit create (open in a new window might be a good idea too).</li>
 <li>Create a new file in the shiny app directory called <code>global.R</code></li>
 <li>Paste the following data processing code into <code>global.R</code></li>
@@ -187,7 +194,7 @@ cleaned_data = original_data %&gt;%
 </code></pre>
 
 <ul>
-<li>Whatever&#39;s in <code>global.R</code> will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as <code>ui.R</code>, <code>server.R</code> and <code>global.R</code> then simplify the <code>read_delim()</code> function to refer to just <code>Brauer2008_DataSet1.tds</code> (without loading it over the internet every time).</li>
+<li>Whatever&#39;s in <code>global.R</code> will be read and executed before the shiny app loads.  If you want you can <a href="http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds">download the data</a> set and include it in the same folder as <code>ui.R</code>, <code>server.R</code> and <code>global.R</code> then simplify the <code>read_delim()</code> function to refer to just <code>Brauer2008_DataSet1.tds</code> (without loading it over the internet every time).</li>
 <li>Run the app to make sure it&#39;s working in this basic form.</li>
 <li><p>Replace the default plot with the first plot we generated above showing results for the <strong>LEU1</strong> gene. Make sure this is working by running the app before proceeding any further.</p></li>
 <li><p>You want this in the <code>server.R</code> file</p></li>
@@ -222,11 +229,11 @@ cleaned_data = original_data %&gt;%
 
 <ul>
 <li>Run to app again to see if it works.  You should get a menu showing up on the left hand side listing all the genes.  This is what the <code>selectizeInput</code> function does - it takes a bunch of <code>choices</code> and offers them to the user as a dropdown list if <code>multiple=FALSE</code> (or a bit fancier where you can select multiple values <code>multiple=TRUE</code>).</li>
-<li>Now we need to link the selected gene to the plot.  The selected gene will be accessible though <code>input$gene</code>.  To explain this, <code>input</code> is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name <code>gene</code> using the <code>inputId</code> argument to the <code>selectizeInput</code> function.  In the <code>server.R</code> function update the plot function to the following:</li>
+<li>Now we need to link the selected gene to the plot.  The selected gene will be accessible though <code>input$gene</code>.  To explain this, <code>input</code> is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name <code>gene</code> using the <code>inputId</code> argument to the <code>selectizeInput</code> function.  In the <code>server.R</code> function update the plot function (specifically the <code>filter()</code> line) to the following:</li>
 </ul>
 
 <pre><code class="r">output$plot1 = renderPlot({
-  filter(is.element(name, input$gene)) %&gt;%
+  filter(name == input$gene) %&gt;%
     ggplot(aes(rate, expression, color = nutrient)) +
     geom_line() + theme_bw(base_size = 14) + 
     facet_wrap(~name + systematic_name)
@@ -234,7 +241,7 @@ cleaned_data = original_data %&gt;%
 </code></pre>
 
 <ul>
-<li><p>What if we wanted to plot multiple genes?  Try changing <code>multiple=TRUE</code> in the selectize input and seeing what happens.  It probably won&#39;t work when multiple genes are selected.  We need to update out filtering in the <code>server.R</code> function to account for multiple gene options.  Something like <code>filter(is.element(name, input$gene))</code> should do the trick.</p></li>
+<li><p>What if we wanted to plot multiple genes?  Try changing <code>multiple=TRUE</code> in the selectize input and seeing what happens.  It won&#39;t work when multiple genes are selected.  We need to update out filtering in plot function in the <code>server.R</code> file to account for multiple gene options.  Something like <code>filter(is.element(name, input$gene))</code> should do the trick.</p></li>
 <li><p>What if we wanted to have the option of a line of best fit?  Add in a checkbox to the sidebarPanel so that your sidebarPanel function should now look like this:</p></li>
 </ul>
 

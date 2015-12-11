@@ -170,14 +170,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 11:37:46 2015 -->
+<!-- Fri Dec 11 12:24:45 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID56688c0bf9 () {
+function gvisDataLineChartID5667927d948 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22217,8 +22217,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID56688c0bf9() {
-var data = gvisDataLineChartID56688c0bf9();
+function drawChartLineChartID5667927d948() {
+var data = gvisDataLineChartID5667927d948();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22239,7 +22239,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID56688c0bf9')
+    document.getElementById('LineChartID5667927d948')
     );
     chart.draw(data,options);
     
@@ -22263,9 +22263,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID56688c0bf9);
+callbacks.push(drawChartLineChartID5667927d948);
 })();
-function displayChartLineChartID56688c0bf9() {
+function displayChartLineChartID5667927d948() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22289,11 +22289,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID56688c0bf9"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5667927d948"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID56688c0bf9" 
+<div id="LineChartID5667927d948" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22306,14 +22306,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 11:37:55 2015 -->
+<!-- Fri Dec 11 12:24:48 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID5664c35becf () {
+function gvisDataBubbleChartID56626c74b92 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22867,8 +22867,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID5664c35becf() {
-var data = gvisDataBubbleChartID5664c35becf();
+function drawChartBubbleChartID56626c74b92() {
+var data = gvisDataBubbleChartID56626c74b92();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22893,7 +22893,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID5664c35becf')
+    document.getElementById('BubbleChartID56626c74b92')
     );
     chart.draw(data,options);
     
@@ -22917,9 +22917,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID5664c35becf);
+callbacks.push(drawChartBubbleChartID56626c74b92);
 })();
-function displayChartBubbleChartID5664c35becf() {
+function displayChartBubbleChartID56626c74b92() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22943,11 +22943,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID5664c35becf"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56626c74b92"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID5664c35becf" 
+<div id="BubbleChartID56626c74b92" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22961,14 +22961,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 11:37:55 2015 -->
+<!-- Fri Dec 11 12:24:49 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID56675507c52 () {
+function gvisDataScatterChartID566286044bb () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23849,8 +23849,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID56675507c52() {
-var data = gvisDataScatterChartID56675507c52();
+function drawChartScatterChartID566286044bb() {
+var data = gvisDataScatterChartID566286044bb();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23865,7 +23865,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID56675507c52')
+    document.getElementById('ScatterChartID566286044bb')
     );
     chart.draw(data,options);
     
@@ -23889,9 +23889,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID56675507c52);
+callbacks.push(drawChartScatterChartID566286044bb);
 })();
-function displayChartScatterChartID56675507c52() {
+function displayChartScatterChartID566286044bb() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23915,11 +23915,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID56675507c52"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID566286044bb"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID56675507c52" 
+<div id="ScatterChartID566286044bb" 
   style="width: 850; height: 500;">
 </div>
 
@@ -23947,7 +23947,7 @@ callbacks.shift()();
 
 Some examples:
 
-- [`networkD3`](http://christophergandrud.github.io/networkD3/): force directed networks, Sankey diagrams, and Reingold-Tilford tree networks
+- [`networkD3`](http://christophergandrud.github.io/networkD3/): force directed networks, Sankey diagrams and tree networks
 - [`edgebundleR`](https://github.com/garthtarr/edgebundleR): hierarchical edge bundle plots
 - [`pairsD3`](https://github.com/garthtarr/pairsD3): interactive scatter plot matrices
 - [`dygraphs`](https://rstudio.github.io/dygraphs/): charting time-series data
@@ -24191,8 +24191,6 @@ Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetw
 
 ## Why is Shiny awesome?
 
-<br>
-
 - No special HTML or JavaScript knowledge required
 - Share the power of R with non R users 
 - Empower your collaborators to **answer their own questions**
@@ -24206,7 +24204,7 @@ Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetw
 
 ### Shinyapps.io
 
-There's a button in Rstudio that lets you push it to their server. 
+There's a button in RStudio that lets you push it to their server. 
 
 ### GitHub <i class="fa fa-github"></i>
 
@@ -24278,30 +24276,31 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] d3heatmap_0.6.1     qtlcharts_0.5-25    magrittr_1.5       
-##  [4] ggplot2_1.0.1       tidyr_0.3.1         dplyr_0.4.3        
-##  [7] readr_0.2.2         knitcitations_1.0.7 knitr_1.11         
-## [10] mplot_0.7.7         edgebundleR_0.1.2   pairsD3_0.1.0      
-## [13] shiny_0.12.2        ggvis_0.4.2.9000    rCharts_0.4.5      
+##  [1] BiocInstaller_1.20.1 d3heatmap_0.6.1      qtlcharts_0.5-25    
+##  [4] magrittr_1.5         ggplot2_1.0.1        tidyr_0.3.1         
+##  [7] dplyr_0.4.3          readr_0.2.2          knitcitations_1.0.7 
+## [10] knitr_1.11           mplot_0.7.7          edgebundleR_0.1.2   
+## [13] pairsD3_0.1.0        shiny_0.12.2         ggvis_0.4.2.9000    
+## [16] rCharts_0.4.5       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] poirot_0.0.2         reshape2_1.4.1       lattice_0.20-33     
-##  [4] colorspace_1.2-6     htmltools_0.2.6      yaml_2.1.13         
-##  [7] base64enc_0.1-3      XML_3.98-1.3         DBI_0.3.1           
-## [10] RColorBrewer_1.1-2   foreach_1.4.3        plyr_1.8.3          
-## [13] stringr_1.0.0        gtable_0.1.2         munsell_0.4.2       
-## [16] devtools_1.9.1       htmlwidgets_0.5      codetools_0.2-14    
-## [19] memoise_0.2.1        evaluate_0.8         labeling_0.3        
-## [22] httpuv_1.3.3         parallel_3.2.2       curl_0.9.4          
-## [25] markdown_0.7.7       proto_0.3-10         Rcpp_0.12.2         
-## [28] xtable_1.8-0         scales_0.3.0         formatR_1.2.1       
-## [31] slidify_0.5          jsonlite_0.9.19      googleVis_0.5.10    
-## [34] mime_0.4             rjson_0.2.15         png_0.1-7           
-## [37] digest_0.6.8         stringi_1.0-1        RJSONIO_1.3-0       
-## [40] grid_3.2.2           bibtex_0.4.0         tools_3.2.2         
-## [43] bitops_1.0-6         lazyeval_0.1.10      RCurl_1.95-4.7      
-## [46] RefManageR_0.8.63    whisker_0.3-2        MASS_7.3-45         
-## [49] rsconnect_0.4.1.4    shinydashboard_0.5.1 lubridate_1.5.0     
-## [52] assertthat_0.1       httr_1.0.0           iterators_1.0.8     
-## [55] R6_2.1.1             igraph_1.0.1
+##  [1] Rcpp_0.12.2          lubridate_1.5.0      lattice_0.20-33     
+##  [4] png_0.1-7            assertthat_0.1       digest_0.6.8        
+##  [7] foreach_1.4.3        mime_0.4             R6_2.1.1            
+## [10] plyr_1.8.3           evaluate_0.8         httr_1.0.0          
+## [13] lazyeval_0.1.10      curl_0.9.4           whisker_0.3-2       
+## [16] googleVis_0.5.10     proto_0.3-10         labeling_0.3        
+## [19] devtools_1.9.1       RefManageR_0.8.63    stringr_1.0.0       
+## [22] htmlwidgets_0.5      igraph_1.0.1         RCurl_1.95-4.7      
+## [25] munsell_0.4.2        httpuv_1.3.3         base64enc_0.1-3     
+## [28] htmltools_0.2.6      codetools_0.2-14     XML_3.98-1.3        
+## [31] MASS_7.3-45          bitops_1.0-6         grid_3.2.2          
+## [34] jsonlite_0.9.19      xtable_1.8-0         gtable_0.1.2        
+## [37] DBI_0.3.1            formatR_1.2.1        scales_0.3.0        
+## [40] bibtex_0.4.0         stringi_1.0-1        reshape2_1.4.1      
+## [43] rjson_0.2.15         RColorBrewer_1.1-2   iterators_1.0.8     
+## [46] tools_3.2.2          RJSONIO_1.3-0        markdown_0.7.7      
+## [49] rsconnect_0.4.1.4    parallel_3.2.2       yaml_2.1.13         
+## [52] slidify_0.5          colorspace_1.2-6     shinydashboard_0.5.1
+## [55] poirot_0.0.2         memoise_0.2.1
 ```

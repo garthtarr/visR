@@ -37,7 +37,7 @@ opts_chunk$set(tidy = TRUE, cache=FALSE)
 ```{r, eval=FALSE}
 install.packages(c("shiny","igraph","WGCNA","devtools"))
 source("http://bioconductor.org/biocLite.R")
-biocLite("impute")
+biocLite(c("impute","GO.db","preprocessCore"))
 devtools::install_github("garthtarr/networkD3")
 ```
 

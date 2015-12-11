@@ -130,6 +130,13 @@ This is great, but there are so many different genes and processes - how can we 
 
 ## Instructions
 
+- Make sure you have the following packages installed:
+
+
+```r
+install.packages(c("readr", "dplyr", "tidyr", "ggplot2"))
+```
+
 - Create a new shiny app in RStudio by going File > New Project > New Directory > Shiny Web Application > Give your project a name and hit create (open in a new window might be a good idea too).
 - Create a new file in the shiny app directory called `global.R`
 - Paste the following data processing code into `global.R`
@@ -155,7 +162,7 @@ cleaned_data = original_data %>%
   mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%
   filter(!is.na(expression), systematic_name != "")
 ```
-- Whatever's in `global.R` will be read and executed before the shiny app loads.  If you want you can download the data set and include it in the same folder as `ui.R`, `server.R` and `global.R` then simplify the `read_delim()` function to refer to just `Brauer2008_DataSet1.tds` (without loading it over the internet every time).
+- Whatever's in `global.R` will be read and executed before the shiny app loads.  If you want you can [download the data](http://www.maths.usyd.edu.au/u/gartht/Brauer2008_DataSet1.tds) set and include it in the same folder as `ui.R`, `server.R` and `global.R` then simplify the `read_delim()` function to refer to just `Brauer2008_DataSet1.tds` (without loading it over the internet every time).
 - Run the app to make sure it's working in this basic form.
 - Replace the default plot with the first plot we generated above showing results for the **LEU1** gene. Make sure this is working by running the app before proceeding any further.
 
@@ -190,19 +197,19 @@ selectizeInput(inputId = "gene",
                multiple = FALSE)
 ```
 - Run to app again to see if it works.  You should get a menu showing up on the left hand side listing all the genes.  This is what the `selectizeInput` function does - it takes a bunch of `choices` and offers them to the user as a dropdown list if `multiple=FALSE` (or a bit fancier where you can select multiple values `multiple=TRUE`).
-- Now we need to link the selected gene to the plot.  The selected gene will be accessible though `input$gene`.  To explain this, `input` is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name `gene` using the `inputId` argument to the `selectizeInput` function.  In the `server.R` function update the plot function to the following:
+- Now we need to link the selected gene to the plot.  The selected gene will be accessible though `input$gene`.  To explain this, `input` is common to all shiny pachages, it is a named list that contains all the inputs that you define in shiny.  We specified the name `gene` using the `inputId` argument to the `selectizeInput` function.  In the `server.R` function update the plot function (specifically the `filter()` line) to the following:
 
 
 ```r
 output$plot1 = renderPlot({
-  filter(is.element(name, input$gene)) %>%
+  filter(name == input$gene) %>%
     ggplot(aes(rate, expression, color = nutrient)) +
     geom_line() + theme_bw(base_size = 14) + 
     facet_wrap(~name + systematic_name)
 })
 ```
 
-- What if we wanted to plot multiple genes?  Try changing `multiple=TRUE` in the selectize input and seeing what happens.  It probably won't work when multiple genes are selected.  We need to update out filtering in the `server.R` function to account for multiple gene options.  Something like `filter(is.element(name, input$gene))` should do the trick.
+- What if we wanted to plot multiple genes?  Try changing `multiple=TRUE` in the selectize input and seeing what happens.  It won't work when multiple genes are selected.  We need to update out filtering in plot function in the `server.R` file to account for multiple gene options.  Something like `filter(is.element(name, input$gene))` should do the trick.
 
 - What if we wanted to have the option of a line of best fit?  Add in a checkbox to the sidebarPanel so that your sidebarPanel function should now look like this:
 

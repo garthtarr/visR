@@ -244,7 +244,7 @@ plot(af.d, width=850, tag = "chart", height=500, fontSize=20, left=50, chartWidt
 
 Some examples:
 
-- [`networkD3`](http://christophergandrud.github.io/networkD3/): force directed networks, Sankey diagrams, and Reingold-Tilford tree networks
+- [`networkD3`](http://christophergandrud.github.io/networkD3/): force directed networks, Sankey diagrams and tree networks
 - [`edgebundleR`](https://github.com/garthtarr/edgebundleR): hierarchical edge bundle plots
 - [`pairsD3`](https://github.com/garthtarr/pairsD3): interactive scatter plot matrices
 - [`dygraphs`](https://rstudio.github.io/dygraphs/): charting time-series data
@@ -426,8 +426,6 @@ Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetw
 
 ## Why is Shiny awesome?
 
-<br>
-
 - No special HTML or JavaScript knowledge required
 - Share the power of R with non R users 
 - Empower your collaborators to **answer their own questions**
@@ -441,7 +439,7 @@ Otherwise it's also hosted here: <a href="https://garthtarr.shinyapps.io/robnetw
 
 ### Shinyapps.io
 
-There's a button in Rstudio that lets you push it to their server. 
+There's a button in RStudio that lets you push it to their server. 
 
 ### GitHub <i class="fa fa-github"></i>
 

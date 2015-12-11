@@ -28,7 +28,7 @@ github      : {user: garthtarr, repo: visR, branch: gh-pages, name: Garth Tarr}
 ```r
 install.packages(c("shiny", "igraph", "WGCNA", "devtools"))
 source("http://bioconductor.org/biocLite.R")
-biocLite("impute")
+biocLite(c("impute", "GO.db", "preprocessCore"))
 devtools::install_github("garthtarr/networkD3")
 ```
 
