@@ -22,7 +22,7 @@ github      : {user: garthtarr, repo: visR, branch: gh-pages, name: Garth Tarr}
 
 - Check out Shila's fast forward poster session slide <a href="https://github.com/garthtarr/visR/blob/gh-pages/labs/02/BIS2015FF_Ghazanfar.pdf"><i class="fa fa-link"></i></a>
 - Download and unzip from [www.maths.usyd.edu.au/u/sheilag/pacmen.zip](http://www.maths.usyd.edu.au/u/sheilag/pacmen.zip)
-- Install a few R packages including customised version of D3network using:
+- Install a few R packages including customised version of `networkD3` using:
 
 
 ```r
@@ -40,7 +40,7 @@ shiny::runApp("~/Downloads/pacmen")
 ```
 
 - Alternatively you can run the app by opening either the `server.R` or the `ui.R` files in RStudio and then clicking the `Run App` button in the top right of the code editor window.
-- Explore the app to get a feel for the sorts of things you can do with shiny.
+- Explore the app to get a feel for the sorts of things you can do with Shiny.
 - Check out Shila's twitter account <a href="https://twitter.com/shazanfar"><i class="fa fa-twitter"></i></a>
 
 ### Common issues
@@ -50,13 +50,13 @@ shiny::runApp("~/Downloads/pacmen")
 
 
 ```r
-devtools::install_github("garthtarr/networkD3")
+devtools::install_github("garthtarr/networkD3", ref = "color")
 ```
 
 
 
 ### References
 
-- Ghazanfar S and Yang JYH. Characterizing mutation-expression network relationships in multiple cancers. F1000Research 2015, 4:1046 (poster) (doi: [10.7490/f1000research.1110789.1](http://dx.doi.org/10.7490/f1000research.1110789.1))
-- Ghazanfar S and Yang JYH. Characterizing mutation-expression network relationships in multiple cancers. _Computational Biology and Chemistry Special Issue for [APBC2016](http://www.sfasa.org/apbc2016/apbc2016.html)_ (in press).
+- Ghazanfar S and Yang JYH (2015). Characterizing mutation-expression network relationships in multiple cancers. F1000Research 2015, 4:1046 (poster) (doi: [10.7490/f1000research.1110789.1](http://dx.doi.org/10.7490/f1000research.1110789.1))
+- Ghazanfar S and Yang JYH (2016). Characterizing mutation-expression network relationships in multiple cancers. _Computational Biology and Chemistry Special Issue for [APBC2016](http://www.sfasa.org/apbc2016/apbc2016.html)_ (in press).
 
