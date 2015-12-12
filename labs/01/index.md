@@ -63,7 +63,7 @@ cleaned_data = original_data %>%
            c("name", "BP", "MF", "systematic_name", "number"), 
            sep = "\\|\\|") %>%
   mutate_each(funs(trimws), name:systematic_name) %>%
-  select(-number, -GID, -YORF, -GWEIGHT)  %>%
+  dplyr::select(-number, -GID, -YORF, -GWEIGHT)  %>%
   gather(sample, expression, G0.05:U0.3) %>%
   separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>%
   mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%
@@ -156,7 +156,7 @@ cleaned_data = original_data %>%
            c("name", "BP", "MF", "systematic_name", "number"), 
            sep = "\\|\\|") %>%
   mutate_each(funs(trimws), name:systematic_name) %>%
-  select(-number, -GID, -YORF, -GWEIGHT)  %>%
+  dplyr::select(-number, -GID, -YORF, -GWEIGHT)  %>%
   gather(sample, expression, G0.05:U0.3) %>%
   separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>%
   mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%

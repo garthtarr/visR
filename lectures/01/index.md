@@ -170,14 +170,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:28:12 2015 -->
+<!-- Sat Dec 12 14:03:07 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID5662d2b2fb8 () {
+function gvisDataLineChartID566c9be33d () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22217,8 +22217,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID5662d2b2fb8() {
-var data = gvisDataLineChartID5662d2b2fb8();
+function drawChartLineChartID566c9be33d() {
+var data = gvisDataLineChartID566c9be33d();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22239,7 +22239,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID5662d2b2fb8')
+    document.getElementById('LineChartID566c9be33d')
     );
     chart.draw(data,options);
     
@@ -22263,9 +22263,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID5662d2b2fb8);
+callbacks.push(drawChartLineChartID566c9be33d);
 })();
-function displayChartLineChartID5662d2b2fb8() {
+function displayChartLineChartID566c9be33d() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22289,11 +22289,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5662d2b2fb8"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID566c9be33d"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID5662d2b2fb8" 
+<div id="LineChartID566c9be33d" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22306,14 +22306,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:28:15 2015 -->
+<!-- Sat Dec 12 14:03:10 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID566c54477f () {
+function gvisDataBubbleChartID56646f29d08 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22867,8 +22867,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID566c54477f() {
-var data = gvisDataBubbleChartID566c54477f();
+function drawChartBubbleChartID56646f29d08() {
+var data = gvisDataBubbleChartID56646f29d08();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22893,7 +22893,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID566c54477f')
+    document.getElementById('BubbleChartID56646f29d08')
     );
     chart.draw(data,options);
     
@@ -22917,9 +22917,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID566c54477f);
+callbacks.push(drawChartBubbleChartID56646f29d08);
 })();
-function displayChartBubbleChartID566c54477f() {
+function displayChartBubbleChartID56646f29d08() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22943,11 +22943,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID566c54477f"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56646f29d08"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID566c54477f" 
+<div id="BubbleChartID56646f29d08" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22961,14 +22961,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:28:15 2015 -->
+<!-- Sat Dec 12 14:03:10 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID5665893d56a () {
+function gvisDataScatterChartID5661b7c4039 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23849,8 +23849,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID5665893d56a() {
-var data = gvisDataScatterChartID5665893d56a();
+function drawChartScatterChartID5661b7c4039() {
+var data = gvisDataScatterChartID5661b7c4039();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23865,7 +23865,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID5665893d56a')
+    document.getElementById('ScatterChartID5661b7c4039')
     );
     chart.draw(data,options);
     
@@ -23889,9 +23889,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID5665893d56a);
+callbacks.push(drawChartScatterChartID5661b7c4039);
 })();
-function displayChartScatterChartID5665893d56a() {
+function displayChartScatterChartID5661b7c4039() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23915,11 +23915,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5665893d56a"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5661b7c4039"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID5665893d56a" 
+<div id="ScatterChartID5661b7c4039" 
   style="width: 850; height: 500;">
 </div>
 
@@ -24276,31 +24276,33 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] BiocInstaller_1.20.1 d3heatmap_0.6.1      qtlcharts_0.5-25    
-##  [4] magrittr_1.5         ggplot2_1.0.1        tidyr_0.3.1         
-##  [7] dplyr_0.4.3          readr_0.2.2          knitcitations_1.0.7 
-## [10] knitr_1.11           mplot_0.7.7          edgebundleR_0.1.2   
-## [13] pairsD3_0.1.0        shiny_0.12.2         ggvis_0.4.2.9000    
-## [16] rCharts_0.4.5       
+##  [1] d3heatmap_0.6.1      xts_0.9-7            zoo_1.7-12          
+##  [4] huge_1.2.7           lattice_0.20-33      Matrix_1.2-3        
+##  [7] dygraphs_0.5         igraph_1.0.1         MASS_7.3-45         
+## [10] networkD3_0.2.6      BiocInstaller_1.20.1 qtlcharts_0.5-25    
+## [13] magrittr_1.5         ggplot2_1.0.1        tidyr_0.3.1         
+## [16] dplyr_0.4.3          readr_0.2.2          knitcitations_1.0.7 
+## [19] knitr_1.11           mplot_0.7.7          edgebundleR_0.1.2   
+## [22] pairsD3_0.1.0        shiny_0.12.2         ggvis_0.4.2.9000    
+## [25] rCharts_0.4.5       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.2          lubridate_1.5.0      lattice_0.20-33     
-##  [4] png_0.1-7            assertthat_0.1       digest_0.6.8        
-##  [7] foreach_1.4.3        mime_0.4             R6_2.1.1            
-## [10] plyr_1.8.3           evaluate_0.8         httr_1.0.0          
-## [13] lazyeval_0.1.10      curl_0.9.4           whisker_0.3-2       
-## [16] googleVis_0.5.10     proto_0.3-10         labeling_0.3        
-## [19] devtools_1.9.1       RefManageR_0.8.63    stringr_1.0.0       
-## [22] htmlwidgets_0.5      igraph_1.0.1         RCurl_1.95-4.7      
-## [25] munsell_0.4.2        httpuv_1.3.3         base64enc_0.1-3     
-## [28] htmltools_0.2.6      codetools_0.2-14     XML_3.98-1.3        
-## [31] MASS_7.3-45          bitops_1.0-6         grid_3.2.2          
-## [34] jsonlite_0.9.19      xtable_1.8-0         gtable_0.1.2        
-## [37] DBI_0.3.1            formatR_1.2.1        scales_0.3.0        
-## [40] bibtex_0.4.0         stringi_1.0-1        reshape2_1.4.1      
-## [43] rjson_0.2.15         RColorBrewer_1.1-2   iterators_1.0.8     
-## [46] tools_3.2.2          RJSONIO_1.3-0        markdown_0.7.7      
-## [49] rsconnect_0.4.1.4    parallel_3.2.2       yaml_2.1.13         
-## [52] slidify_0.5          colorspace_1.2-6     shinydashboard_0.5.1
-## [55] poirot_0.0.2         memoise_0.2.1
+##  [1] Rcpp_0.12.2          lubridate_1.5.0      png_0.1-7           
+##  [4] assertthat_0.1       digest_0.6.8         foreach_1.4.3       
+##  [7] mime_0.4             R6_2.1.1             plyr_1.8.3          
+## [10] evaluate_0.8         httr_1.0.0           lazyeval_0.1.10     
+## [13] curl_0.9.4           whisker_0.3-2        googleVis_0.5.10    
+## [16] proto_0.3-10         labeling_0.3         devtools_1.9.1      
+## [19] RefManageR_0.8.63    stringr_1.0.0        htmlwidgets_0.5     
+## [22] RCurl_1.95-4.7       munsell_0.4.2        httpuv_1.3.3        
+## [25] base64enc_0.1-3      htmltools_0.2.6      codetools_0.2-14    
+## [28] XML_3.98-1.3         bitops_1.0-6         grid_3.2.2          
+## [31] jsonlite_0.9.19      xtable_1.8-0         gtable_0.1.2        
+## [34] DBI_0.3.1            formatR_1.2.1        scales_0.3.0        
+## [37] bibtex_0.4.0         stringi_1.0-1        reshape2_1.4.1      
+## [40] rjson_0.2.15         RColorBrewer_1.1-2   iterators_1.0.8     
+## [43] tools_3.2.2          RJSONIO_1.3-0        markdown_0.7.7      
+## [46] rsconnect_0.4.1.4    parallel_3.2.2       yaml_2.1.13         
+## [49] slidify_0.5          colorspace_1.2-6     shinydashboard_0.5.1
+## [52] poirot_0.0.2         memoise_0.2.1
 ```

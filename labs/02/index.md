@@ -29,7 +29,7 @@ github      : {user: garthtarr, repo: visR, branch: gh-pages, name: Garth Tarr}
 install.packages(c("shiny", "igraph", "WGCNA", "devtools"))
 source("http://bioconductor.org/biocLite.R")
 biocLite(c("impute", "GO.db", "preprocessCore"))
-devtools::install_github("garthtarr/networkD3")
+devtools::install_github("garthtarr/networkD3", ref = "color")
 ```
 
 - Run the app using a command like (replace `~/Downloads/` with the path to the `pacmen` unzipped folder):
