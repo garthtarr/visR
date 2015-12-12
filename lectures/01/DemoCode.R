@@ -71,7 +71,9 @@ d3heatmap(cmat, minVal = -1, maxVal = 1)
 
 # install.packages("ggvis")
 require(ggvis)
+
 faithful %>% ggvis(~eruptions) %>% layer_histograms() 
+
 pressure %>% ggvis(~temperature, ~pressure) %>% layer_lines()
 # tooltips
 mtcars %>% ggvis(x = ~wt, y = ~mpg) %>% 

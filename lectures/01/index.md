@@ -170,14 +170,14 @@ vis.d = vis(lm.d, B = 200)
 plot(vis.d, which = "vip")
 ```
 <!-- LineChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:24:45 2015 -->
+<!-- Fri Dec 11 12:28:12 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID5667927d948 () {
+function gvisDataLineChartID5662d2b2fb8 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22217,8 +22217,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID5667927d948() {
-var data = gvisDataLineChartID5667927d948();
+function drawChartLineChartID5662d2b2fb8() {
+var data = gvisDataLineChartID5662d2b2fb8();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Variable inclusion plot";
@@ -22239,7 +22239,7 @@ options["backgroundColor"] = "transparent";
 options["annotations"] = {style:'line'};
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID5667927d948')
+    document.getElementById('LineChartID5662d2b2fb8')
     );
     chart.draw(data,options);
     
@@ -22263,9 +22263,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID5667927d948);
+callbacks.push(drawChartLineChartID5662d2b2fb8);
 })();
-function displayChartLineChartID5667927d948() {
+function displayChartLineChartID5662d2b2fb8() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22289,11 +22289,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5667927d948"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID5662d2b2fb8"></script>
  
 <!-- divChart -->
   
-<div id="LineChartID5667927d948" 
+<div id="LineChartID5662d2b2fb8" 
   style="width: 800; height: 450;">
 </div>
 
@@ -22306,14 +22306,14 @@ callbacks.shift()();
 plot(vis.d, which = "boot", highlight = "ltg")
 ```
 <!-- BubbleChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:24:48 2015 -->
+<!-- Fri Dec 11 12:28:15 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataBubbleChartID56626c74b92 () {
+function gvisDataBubbleChartID566c54477f () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -22867,8 +22867,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartBubbleChartID56626c74b92() {
-var data = gvisDataBubbleChartID56626c74b92();
+function drawChartBubbleChartID566c54477f() {
+var data = gvisDataBubbleChartID566c54477f();
 var options = {};
 options["title"] = "Model stability plot";
 options["fontSize"] =     20;
@@ -22893,7 +22893,7 @@ options["explorer"] = {axis: 'vertical',
                          'rightClickToReset']};
 
     var chart = new google.visualization.BubbleChart(
-    document.getElementById('BubbleChartID56626c74b92')
+    document.getElementById('BubbleChartID566c54477f')
     );
     chart.draw(data,options);
     
@@ -22917,9 +22917,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartBubbleChartID56626c74b92);
+callbacks.push(drawChartBubbleChartID566c54477f);
 })();
-function displayChartBubbleChartID56626c74b92() {
+function displayChartBubbleChartID566c54477f() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -22943,11 +22943,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID56626c74b92"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartBubbleChartID566c54477f"></script>
  
 <!-- divChart -->
   
-<div id="BubbleChartID56626c74b92" 
+<div id="BubbleChartID566c54477f" 
   style="width: 800; height: 500;">
 </div>
 
@@ -22961,14 +22961,14 @@ af.d = af(lm.d, B = 200, n.c = 100, c.max = 100)
 plot(af.d)
 ```
 <!-- ScatterChart generated in R 3.2.2 by googleVis 0.5.10 package -->
-<!-- Fri Dec 11 12:24:49 2015 -->
+<!-- Fri Dec 11 12:28:15 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID566286044bb () {
+function gvisDataScatterChartID5665893d56a () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -23849,8 +23849,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID566286044bb() {
-var data = gvisDataScatterChartID566286044bb();
+function drawChartScatterChartID5665893d56a() {
+var data = gvisDataScatterChartID5665893d56a();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Adaptive fence: c*=47.5";
@@ -23865,7 +23865,7 @@ options["width"] =    850;
 options["height"] =    500;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID566286044bb')
+    document.getElementById('ScatterChartID5665893d56a')
     );
     chart.draw(data,options);
     
@@ -23889,9 +23889,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID566286044bb);
+callbacks.push(drawChartScatterChartID5665893d56a);
 })();
-function displayChartScatterChartID566286044bb() {
+function displayChartScatterChartID5665893d56a() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -23915,11 +23915,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID566286044bb"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID5665893d56a"></script>
  
 <!-- divChart -->
   
-<div id="ScatterChartID566286044bb" 
+<div id="ScatterChartID5665893d56a" 
   style="width: 850; height: 500;">
 </div>
 
